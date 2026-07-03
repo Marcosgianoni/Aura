@@ -2,6 +2,33 @@ especialista-propostas-super-seg
 version: 4.1.4
 date: 2026-07-03
 
+Mudancas na 4.1.4 (capa ancorada; encaixe medido pelo fundo do caractere)
+- Origem: devolutiva real GD 36148 aprovada pelo QA com dois defeitos: capa
+  com o bloco de datas quebrado e o selo DESDE 2013 clipado para fora da
+  pagina (nome de 3 linhas + lead de 4 linhas empurravam o bloco, que era
+  in-flow, e o overflow:hidden da .page cortava em silencio); pagamento de
+  4 linhas invadindo o rodape da pg3 (~4pt de sobreposicao real).
+- Dois furos combinados deixaram passar: o render tolerou residuo <= 16px
+  delegando ao QA, e o guarda do QA media o TOPO do caractere contra faixa
+  fixa de 50pt (hastes descendentes p/j/g desciam ate ~44pt sem disparar).
+- template: .capa-bottom ancorado na base (absoluto, bottom 14mm, mesma
+  tecnica do .footer-edit); padding-bottom da capa 14mm -> 34mm reservando
+  a faixa do bloco.
+- render.py: a capa ENTRA na medicao de encaixe (limite = .capa-bottom);
+  levers novos para a capa (titulo 62->50pt, subtitulo, slogan, ficha) e
+  para o .pagamento-edit (9->8pt, piso do Poppins), que era o unico bloco
+  da pg3 sem lever e foi justamente o invasor.
+- qa.py: guarda de encaixe mede o FUNDO do charbox minusculo mais baixo
+  contra o topo do rodape (48pt) com folga de 6pt (limite 54pt), pgs 2 a 5.
+  Checagens novas da capa: presenca de EMITIDA EM, VALIDA ATE e do selo
+  DESDE 2013 (empurrado para fora, some da extracao) e piso de 4pt na borda
+  (capas saudaveis medem 7.9 a 10.1pt).
+- Golden GD atualizado com o lead real de 4 linhas (reproduz a capa quebrada
+  e o pagamento longo). smoke.sh: render+QA tambem do golden GD; grep exato
+  do veredito (APROVADO solto tambem casa com REPROVADO).
+- Validado em /tmp na VPS antes do commit: GD reprovava no QA novo com o
+  codigo antigo e aprova com o novo; 5 goldens aprovados na regressao.
+
 Mudancas na 4.1.3 (valor_moeda derivado; regra de centavos nas mensagens)
 - valor_moeda e valor_grande passam a ser DERIVADOS pelo sub.py a partir do
   total (bloco editorial, total_int/cent da tabela, ou normalizacao do
