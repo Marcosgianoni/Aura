@@ -4,6 +4,12 @@
 # Portoes: git ff-only (historico integro), VERSION impresso, smoke obrigatorio.
 set -euo pipefail
 
+# Guarda: este script roda SOMENTE na VPS, como usuario aura.
+if [ "$(whoami)" != "aura" ]; then
+  echo "ERRO: deploy.sh deve rodar NA VPS (prompt aura@srv...). Este terminal nao e a VPS." >&2
+  exit 1
+fi
+
 SKILL="especialista-propostas-super-seg"
 REPO_DIR="${REPO_DIR:-$HOME/Aura}"
 DEST="$HOME/.hermes/skills/software-development/$SKILL"
