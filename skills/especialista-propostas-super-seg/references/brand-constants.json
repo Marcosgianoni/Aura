@@ -1,0 +1,43 @@
+{
+  "company": {
+    "legal_name": "Super Seg Assessoria de Medicina e Segurança do Trabalho LTDA",
+    "short_name": "Super Seg",
+    "cnpj": "18.797.265/0001-28",
+    "ie": "442.285.726.117",
+    "address": "Rua dos Bandeirantes, 405, Vila Bocaina, Mauá / SP, CEP 09310-360",
+    "phone": "(11) 3421-5870",
+    "email": "comercial@super-seg.com",
+    "since": 2013,
+    "slogan": "Acreditar · Evoluir · Conquistar"
+  },
+  "colors": {
+    "azul": "#0a2a6b",
+    "verde": "#5cc63d"
+  },
+  "payment_pix": {
+    "bank": "NuBank",
+    "agencia": "0001",
+    "conta": "15672181-7",
+    "chave_pix": "18.797.265/0001-28"
+  },
+  "calendar_url_fixed": "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2q8jkAjW5aSUWQHbNYhEUBC_EHDJaAiLVVTspUl1Mj8D0JMnCLLrgwUoHTjIu-Nkrs1ev0BHVA",
+  "calendar_url_note": "Never modify. Used as-is in the Agendar button on page 5.",
+  "social_proof": {
+    "video_institucional": "https://drive.google.com/file/d/1gq9qP2qezHOQrfWCDHfzwcJjhYi-CJYm/view",
+    "slides_institucional": "https://drive.google.com/file/d/1Ohfkno9lFMpYrkgDdDbBZf7IjcrZuX2r/view",
+    "reportagem_redetv": "https://drive.google.com/file/d/18Ki7YOydqqtaXxiTK0wuyLfpfaE97bWb/view?usp=sharing"
+  },
+  "fixed_copy": {
+    "cover_title": "Sua empresa super segura, do laudo à entrega.",
+    "cta_title": "Quero minha empresa super segura.",
+    "stats": ["13+ anos de mercado", "100% conformidade", "RedeTV!"],
+    "pilares": ["Segurança Jurídica", "Agilidade", "Rigor Técnico", "Compromisso ESG"]
+  },
+  "external_links_rule": "All external links open in a new tab: target=\"_blank\" rel=\"noopener noreferrer\" on the three institutional links and the three CTA buttons.",
+  "logo": {
+    "file": "logo_super_seg.png",
+    "background": "white",
+    "alpha": false,
+    "note": "Real file is white-background PNG (not transparent). Embed as base64; do not add a background to the img or its container."
+  }
+}

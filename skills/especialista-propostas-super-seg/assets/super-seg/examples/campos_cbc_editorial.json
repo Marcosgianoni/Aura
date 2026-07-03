@@ -1,0 +1,77 @@
+{
+  "variante": "servicos",
+  "numero": "30891",
+  "cliente": "COMPANHIA BRASILEIRA DE CARTUCHOS",
+  "cliente_caps": "COMPANHIA BRASILEIRA DE CARTUCHOS",
+  "cliente_display": "Companhia Brasileira de Cartuchos",
+  "cnpj": "57.494.031/0001-63",
+  "ac_contato": "Administração",
+  "ac_email": "CONTABILIDADE@CBCSA.COM.BR",
+  "data_emissao": "02.07.2026",
+  "validade": "17.07.2026",
+  "validade_barra": "17/07/2026",
+  "valor_grande": "79.815",
+  "valor_moeda": "R$ 79.815",
+  "service_summary": "PPR, Fit Test quantitativo e Treinamento em PPR",
+  "service_summary_wa": "PPR + Fit Test + Treinamento",
+  "lead_apresentacao": "Pacote técnico em proteção respiratória: elaboração do PPR, Fit Test quantitativo e treinamento em PPR, estruturados para apoiar a conformidade da operação com as exigências de segurança e saúde ocupacional.",
+  "setor_verbo": "move",
+  "pilares": {
+    "juridica": "Documentação e ações técnicas em conformidade que apoiam sua empresa em fiscalizações, auditorias e gestão de riscos ocupacionais.",
+    "agilidade": "Entrega conforme previsão do orçamento, preservando o rigor técnico necessário para o escopo contratado.",
+    "tecnico": "Equipe especializada na elaboração de PPR, aplicação de Fit Test quantitativo e treinamento em proteção respiratória.",
+    "esg": "Entregas digitais com certificação ICP-Brasil, reduzindo o uso de papel e apoiando uma operação mais segura e responsável."
+  },
+  "escopo_intro": "Após análise do escopo da Companhia Brasileira de Cartuchos, desenhamos o pacote técnico abaixo, com serviços, quantidades e valores detalhados.",
+  "pagina3_editorial": {
+    "itens": [
+      {
+        "categoria": "PROTEÇÃO RESPIRATÓRIA",
+        "titulo": "Elaboração de PPR (Programa de Proteção Respiratória)",
+        "titulo_italico": "Proteção Respiratória",
+        "qtd": 1,
+        "preco": 9975.0,
+        "descricao": "Elaboração do documento base com as ações que devem ser seguidas de acordo com o **PGR, Programa de Gerenciamento de Riscos**.",
+        "checklist": [
+          "Documento base do programa",
+          "Ações alinhadas ao PGR vigente"
+        ]
+      },
+      {
+        "categoria": "QUANTITATIVO",
+        "titulo": "Fit Test Quantitativo",
+        "titulo_italico": "Quantitativo",
+        "qtd": 214,
+        "preco": 66340.0,
+        "preco_unitario": 310.0,
+        "descricao": "Fit Test Quantitativo conforme planilha enviada, considerando **1 teste para cada risco químico e setor habitual**.",
+        "checklist": [
+          "214 testes quantitativos",
+          "1 teste por risco químico e setor habitual",
+          "Conforme planilha enviada"
+        ]
+      },
+      {
+        "categoria": "TURMA",
+        "titulo": "Treinamento em PPR",
+        "titulo_italico": "PPR",
+        "qtd": 1,
+        "preco": 3500.0,
+        "descricao": "Treinamento em Programa de Proteção Respiratória, valor por turma, considerando **até 20 colaboradores por turma**.",
+        "checklist": [
+          "Valor por turma",
+          "Até 20 colaboradores por turma"
+        ]
+      }
+    ],
+    "total": 79815.0,
+    "observacao_tecnica": "O Fit Test foi considerado conforme planilha enviada, com 1 teste para cada risco químico e setor habitual. O treinamento em PPR considera turma de até 20 colaboradores.",
+    "investimento": {
+      "subtitulo_itens": "PPR · Fit Test quantitativo · Treinamento em PPR"
+    },
+    "forma_pagamento": {
+      "origem": "orcamento",
+      "texto": "Após a aprovação do orçamento, a **Nota Fiscal** será emitida juntamente com o boleto, com vencimento para **30 dias** a contar da data de emissão. A previsão de entrega do escopo contratado será de até **20 dias úteis**, com até **7 dias** para eventuais ajustes, sem cobrança adicional, caso necessário."
+    }
+  }
+}

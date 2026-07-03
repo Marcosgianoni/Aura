@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Proposta Comercial — Super Seg</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700;1,9..144,800;1,9..144,900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+  :root {
+    --azul: #0a2a6b;
+    --azul-claro: #1e4ba8;
+    --verde: #5cc63d;
+    --verde-escuro: #3a9624;
+    --preto: #0d0d0d;
+    --grafite: #1a1a1a;
+    --cinza-900: #2a2a2a;
+    --cinza-700: #4a4a4a;
+    --cinza-500: #8a8a8a;
+    --cinza-300: #c8c8c8;
+    --cinza-200: #e2e2e2;
+    --cinza-100: #f0f0f0;
+    --bg: #fafafa;
+    --branco: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page { size: A4; margin: 0; }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    color: var(--grafite);
+    line-height: 1.55;
+    font-size: 10pt;
+    background: white;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    page-break-after: always;
+    page-break-inside: avoid;
+    position: relative;
+    overflow: hidden;
+    background: white;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .display-xl {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 62pt;
+    line-height: 0.95;
+    letter-spacing: -2pt;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .display-lg {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 40pt;
+    line-height: 1.0;
+    letter-spacing: -1.2pt;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .display-md {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 23pt;
+    line-height: 1.05;
+    letter-spacing: -0.5pt;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .display-sm {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18pt;
+    line-height: 1.15;
+    letter-spacing: -0.3pt;
+  }
+
+  .italic { font-style: italic; font-weight: 300; }
+
+  .eyebrow {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 7.5pt;
+    letter-spacing: 2.5pt;
+    text-transform: uppercase;
+    color: var(--cinza-700);
+  }
+
+  .eyebrow-verde { color: var(--verde-escuro); }
+  .eyebrow-azul { color: var(--azul); }
+
+  .body-text {
+    font-size: 10pt;
+    line-height: 1.6;
+    color: var(--cinza-900);
+    font-weight: 400;
+  }
+
+  .body-text-lg {
+    font-size: 12pt;
+    line-height: 1.55;
+    color: var(--cinza-900);
+    font-weight: 300;
+  }
+
+  .micro {
+    font-size: 7pt;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    font-weight: 600;
+  }
+
+  .capa {
+    height: 297mm;
+    background: white;
+    position: relative;
+    padding: 16mm 20mm 14mm 20mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .capa-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0;
+  }
+
+  .capa-logo {
+    width: 42mm;
+    height: auto;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  .capa-meta-top {
+    text-align: right;
+  }
+
+  .capa-meta-top .micro {
+    display: block;
+    margin-bottom: 3pt;
+  }
+
+  .capa-numero {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 22pt;
+    color: var(--azul);
+    letter-spacing: -0.5pt;
+    line-height: 1;
+  }
+
+  .linha-editorial {
+    margin: 10mm 0 6mm 0;
+    border-top: 1px solid var(--cinza-200);
+    position: relative;
+  }
+
+  .linha-editorial::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 18mm;
+    height: 1px;
+    background: var(--verde);
+  }
+
+  .secao-numero {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 14pt;
+    color: var(--cinza-500);
+    letter-spacing: -0.3pt;
+    font-style: italic;
+    margin-bottom: 6pt;
+  }
+
+  .capa-conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6mm 0;
+  }
+
+  .capa-titulo {
+    margin-bottom: 10mm;
+    max-width: 165mm;
+  }
+
+  .capa-titulo .linha {
+    display: block;
+    color: var(--grafite);
+  }
+
+  .capa-titulo .destaque {
+    color: var(--azul);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .capa-titulo .verde-dot {
+    color: var(--verde);
+  }
+
+  .capa-subtitulo {
+    max-width: 130mm;
+    color: var(--cinza-700);
+    font-weight: 300;
+    font-size: 11.5pt;
+    line-height: 1.55;
+    border-left: 2px solid var(--verde);
+    padding-left: 10pt;
+  }
+
+  .capa-slogan {
+    margin-top: 8mm;
+    padding-top: 6mm;
+    border-top: 1px solid var(--cinza-200);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13pt;
+    color: var(--azul);
+    letter-spacing: -0.2pt;
+    max-width: 160mm;
+    position: relative;
+  }
+
+  .capa-slogan::before {
+    content: '— Slogan';
+    position: absolute;
+    top: -4pt;
+    left: 0;
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 6.5pt;
+    letter-spacing: 2pt;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    background: white;
+    padding-right: 6pt;
+  }
+
+  .capa-slogan .slogan-marca {
+    color: var(--azul);
+  }
+
+  .capa-slogan .slogan-sep {
+    color: var(--verde);
+    font-style: normal;
+    margin: 0 4pt;
+    font-weight: 600;
+  }
+
+  .ficha-cliente {
+    display: grid;
+    grid-template-columns: 70mm 40mm 1fr;
+    gap: 0;
+    padding: 8mm 0;
+    border-top: 1px solid var(--cinza-200);
+    border-bottom: 1px solid var(--cinza-200);
+  }
+
+  .ficha-coluna {
+    padding-right: 14pt;
+  }
+
+  .ficha-coluna .micro {
+    display: block;
+    margin-bottom: 5pt;
+  }
+
+  .ficha-coluna .conteudo {
+    font-size: 9.5pt;
+    color: var(--grafite);
+    line-height: 1.4;
+  }
+
+  .ficha-coluna .conteudo strong {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2pt;
+    letter-spacing: -0.3pt;
+  }
+
+  .capa-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 6mm;
+  }
+
+  .capa-data-bloco {
+    display: flex;
+    gap: 20mm;
+  }
+
+  .capa-data-bloco .item .micro {
+    display: block;
+    margin-bottom: 4pt;
+  }
+
+  .capa-data-bloco .item .valor {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 13pt;
+    color: var(--grafite);
+    letter-spacing: -0.3pt;
+  }
+
+  .capa-data-bloco .item.validade .valor {
+    color: var(--azul);
+  }
+
+  .capa-marca-dagua {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 8.5pt;
+    color: var(--cinza-500);
+    text-align: right;
+  }
+
+  .capa-marca-dagua strong {
+    color: var(--verde-escuro);
+    font-weight: 500;
+    font-style: normal;
+    font-family: 'Manrope', sans-serif;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+    font-size: 7pt;
+    display: block;
+    margin-top: 3pt;
+  }
+
+  .pagina-interna {
+    height: 297mm;
+    /* padding inferior reserva a faixa do rodape fixo: 12mm de offset do rodape
+       + ~11mm de altura do rodape (padding-top 6mm + linha de texto) + folga.
+       O conteudo vive acima dessa faixa; o rodape e absoluto (ver .footer-edit). */
+    padding: 10mm 20mm 25mm 20mm;
+    background: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-interno {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8pt;
+    border-bottom: 1px solid var(--cinza-200);
+    position: relative;
+  }
+
+  .header-interno::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 18mm;
+    height: 1px;
+    background: var(--verde);
+  }
+
+  .header-interno img {
+    height: 12mm;
+    width: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  .header-interno .ref-direita {
+    text-align: right;
+    font-size: 8pt;
+    color: var(--cinza-700);
+    line-height: 1.4;
+  }
+
+  .header-interno .ref-direita .num {
+    font-family: 'Fraunces', serif;
+    color: var(--azul);
+    font-weight: 500;
+    font-size: 11pt;
+  }
+
+  /* Pagina 3 (4.1.0): manchete compacta e coluna esquerda alargada para
+     "por completo." caber na linha; libera ~28mm para os itens do escopo. */
+  .cab-escopo { grid-template-columns: 1.35fr 1fr; gap: 10mm; margin-top: 7mm; margin-bottom: 5mm; }
+  .display-escopo { font-size: 34pt; }
+
+  .secao-cabecalho {
+    margin-top: 10mm;
+    margin-bottom: 7mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16mm;
+    align-items: end;
+  }
+
+  .secao-cabecalho .esquerda .secao-numero {
+    margin-bottom: 4pt;
+  }
+
+  .secao-cabecalho .esquerda .eyebrow {
+    margin-bottom: 8pt;
+    display: block;
+  }
+
+  .secao-cabecalho .direita {
+    padding-bottom: 6pt;
+  }
+
+  .secao-cabecalho .lead-pequeno {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: var(--cinza-700);
+    font-weight: 300;
+  }
+
+  .stats-editorial {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    margin: 5mm 0;
+    border-top: 1px solid var(--cinza-200);
+    border-bottom: 1px solid var(--cinza-200);
+  }
+
+  .stat-edit {
+    padding: 6mm 6mm 6mm 0;
+    border-right: 1px solid var(--cinza-200);
+    position: relative;
+  }
+
+  .stat-edit:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .stat-edit:not(:first-child) {
+    padding-left: 6mm;
+  }
+
+  .stat-edit .numero-grande {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 46pt;
+    line-height: 0.9;
+    letter-spacing: -2pt;
+    color: var(--azul);
+    font-variation-settings: 'opsz' 144;
+    margin-bottom: 6pt;
+  }
+
+  .stat-edit .numero-grande .sufixo {
+    color: var(--verde);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .stat-edit .stat-label {
+    font-size: 8pt;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+    color: var(--cinza-700);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .pilares-titulo {
+    margin-top: 4mm;
+    margin-bottom: 3mm;
+  }
+
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--cinza-200);
+  }
+
+  .pilar {
+    padding: 3.5mm 6mm 3.5mm 0;
+    border-bottom: 1px solid var(--cinza-200);
+    position: relative;
+  }
+
+  .pilar:nth-child(odd) {
+    border-right: 1px solid var(--cinza-200);
+  }
+
+  .pilar:nth-child(even) {
+    padding-left: 6mm;
+  }
+
+  .pilar-numero {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 11pt;
+    color: var(--verde);
+    margin-bottom: 6pt;
+    letter-spacing: -0.3pt;
+  }
+
+  .pilar-titulo {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 12pt;
+    color: var(--grafite);
+    margin-bottom: 3pt;
+    letter-spacing: -0.3pt;
+    line-height: 1.2;
+  }
+
+  .pilar-texto {
+    font-size: 8pt;
+    color: var(--cinza-700);
+    line-height: 1.45;
+  }
+
+  .midia-editorial {
+    margin-top: 4mm;
+    padding-top: 4mm;
+    border-top: 2px solid var(--grafite);
+    position: relative;
+  }
+
+  .midia-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6mm;
+    align-items: baseline;
+    margin-bottom: 3mm;
+  }
+
+  .midia-titulo-edit {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 16pt;
+    color: var(--grafite);
+    letter-spacing: -0.4pt;
+    line-height: 1.1;
+  }
+
+  .midia-titulo-edit .italic {
+    color: var(--azul);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .midia-subtitulo {
+    font-size: 8.5pt;
+    color: var(--cinza-500);
+    font-style: italic;
+    line-height: 1.4;
+    text-align: right;
+  }
+
+  .midia-link-edit {
+    display: grid;
+    grid-template-columns: 6mm 14mm minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 6pt;
+    padding: 6pt 0;
+    border-bottom: 1px solid var(--cinza-200);
+    text-decoration: none;
+    color: var(--grafite);
+    transition: all 0.2s;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .midia-link-edit:last-child {
+    border-bottom: none;
+  }
+
+  .midia-link-edit .num-link {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 11pt;
+    color: var(--verde);
+  }
+
+  .midia-link-edit .tag-link {
+    font-size: 7pt;
+    letter-spacing: 1.8pt;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--cinza-500);
+    padding: 3pt 0;
+  }
+
+  .midia-link-edit .titulo-link-edit {
+    font-size: 9.5pt;
+    color: var(--grafite);
+    font-weight: 500;
+    font-family: 'Fraunces', serif;
+    letter-spacing: -0.2pt;
+    text-decoration: underline;
+    text-decoration-color: var(--cinza-300);
+    text-underline-offset: 2pt;
+    text-decoration-thickness: 0.5pt;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .midia-link-edit .botao-abrir {
+    background: var(--verde);
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 1pt;
+    text-transform: uppercase;
+    padding: 5pt 10pt;
+    border-radius: 4pt;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5pt;
+    box-shadow: none;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+
+  .midia-link-edit .botao-abrir .seta-abrir {
+    font-family: 'Manrope', sans-serif;
+    font-size: 12pt;
+    font-weight: 400;
+    line-height: 0;
+    color: white;
+    display: inline-block;
+    position: relative;
+    top: -1pt;
+  }
+
+  .escopo-edit {
+    margin-top: 2mm;
+    border-top: 1px solid var(--cinza-200);
+    padding-top: 4mm;
+  }
+
+  .escopo-edit-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10mm;
+    align-items: start;
+    padding-bottom: 4mm;
+  }
+
+  .escopo-edit-numero {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 38pt;
+    color: var(--verde);
+    line-height: 1;
+    letter-spacing: -1.5pt;
+  }
+
+  .escopo-edit-titulo-bloco .micro {
+    display: block;
+    margin-bottom: 4pt;
+  }
+
+  .escopo-edit-titulo {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22pt;
+    color: var(--grafite);
+    letter-spacing: -0.6pt;
+    line-height: 1.1;
+  }
+
+  /* ===== ESCOPO — TABELA MULTI-SERVICO GENERICA (Nº/Servico/Espec/Qtd/Valor) ===== */
+  .escopo-servicos { margin-top: 2mm; border-top: 1px solid var(--cinza-200); padding-top: 4mm; }
+  .escopo-servicos-header { display: grid; grid-template-columns: auto 1fr auto; gap: 8mm; align-items: start; padding-bottom: 3mm; }
+  .escopo-servicos-header .escopo-edit-numero { font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; font-size: 30pt; color: var(--verde); line-height: 1; letter-spacing: -1.5pt; }
+  .escopo-servicos-header .micro { display: block; margin-bottom: 3pt; }
+  .escopo-servicos-header .escopo-edit-titulo { font-family: 'Fraunces', serif; font-weight: 500; font-size: 18pt; color: var(--grafite); letter-spacing: -0.6pt; line-height: 1.1; }
+  .escopo-servicos-header .escopo-edit-titulo .italic { color: var(--azul); font-style: italic; font-weight: 400; }
+  .escopo-servicos-header .escopo-edit-qtd { text-align: right; padding-top: 4pt; }
+  .escopo-servicos-header .escopo-edit-qtd .micro { display: block; margin-bottom: 2pt; }
+  .escopo-servicos-header .escopo-edit-qtd .qtd-num { font-family: 'Fraunces', serif; font-weight: 400; font-size: 22pt; color: var(--azul); line-height: 1; letter-spacing: -0.8pt; }
+  .escopo-servicos-intro { font-size: 9pt; color: var(--cinza-900); line-height: 1.45; font-weight: 300; margin: 1mm 0 3mm 0; padding-top: 2.5mm; border-top: 1px solid var(--cinza-200); }
+  .escopo-servicos-intro strong { font-weight: 600; color: var(--grafite); }
+  .tabela-servicos { width: 100%; border-collapse: collapse; margin-bottom: 3mm; table-layout: fixed; }
+  .tabela-servicos thead th { font-size: 6.5pt; letter-spacing: 1.2pt; text-transform: uppercase; color: var(--cinza-500); font-weight: 700; padding: 0 4pt 6pt 0; border-bottom: 1.5px solid var(--grafite); text-align: left; }
+  .tabela-servicos thead th.th-c { text-align: center; }
+  .tabela-servicos thead th.th-r { text-align: right; }
+  .tabela-servicos tbody td { padding: 4pt 4pt 4pt 0; border-bottom: 1px solid var(--cinza-200); vertical-align: top; }
+  .tabela-servicos .col-num { width: 6mm; text-align: center; font-family: 'Fraunces', serif; font-weight: 400; font-size: 12pt; color: var(--verde); line-height: 1.1; }
+  .tabela-servicos .col-servico { width: 27mm; }
+  .tabela-servicos .col-servico .serv-nome { font-family: 'Fraunces', serif; font-weight: 500; font-size: 9.5pt; color: var(--grafite); letter-spacing: -0.2pt; display: block; line-height: 1.15; }
+  .tabela-servicos .col-servico .serv-norma { font-family: 'Manrope', sans-serif; font-size: 6pt; letter-spacing: 0.8pt; text-transform: uppercase; font-weight: 700; color: var(--azul); margin-top: 2pt; display: block; }
+  .tabela-servicos .col-espec { font-size: 8pt; color: var(--cinza-700); line-height: 1.32; }
+  .tabela-servicos .col-qt { width: 8mm; text-align: center; font-family: 'Fraunces', serif; font-weight: 400; font-size: 12pt; color: var(--azul); }
+  .tabela-servicos .col-unit { width: 19mm; text-align: right; font-size: 9pt; color: var(--cinza-700); white-space: nowrap; }
+  .tabela-servicos .col-sub { width: 20mm; text-align: right; font-family: 'Fraunces', serif; font-weight: 500; font-size: 10.5pt; color: var(--grafite); white-space: nowrap; }
+  .tabela-servicos tfoot td { padding: 7pt 6pt 0 0; border-top: 1.5px solid var(--grafite); border-bottom: none; vertical-align: baseline; }
+  .tabela-servicos tfoot .total-rotulo { font-size: 7.5pt; letter-spacing: 2pt; text-transform: uppercase; font-weight: 700; color: var(--verde-escuro); text-align: right; }
+  .tabela-servicos tfoot .total-valor { text-align: right; white-space: nowrap; }
+  .tabela-servicos tfoot .total-valor .moeda-tot { font-family: 'Fraunces', serif; font-style: italic; font-size: 11pt; color: var(--cinza-700); margin-right: 2pt; }
+  .tabela-servicos tfoot .total-valor .num-tot { font-family: 'Fraunces', serif; font-weight: 400; font-size: 19pt; color: var(--azul); letter-spacing: -0.5pt; }
+  .tabela-servicos tfoot .total-valor .cent-tot { font-size: 10pt; vertical-align: top; color: var(--azul); margin-left: 1pt; }
+  .escopo-servicos-nota { margin-top: 2mm; padding: 3mm 4mm; background: var(--bg); border-left: 2px solid var(--azul); font-size: 8pt; color: var(--cinza-700); line-height: 1.5; font-style: italic; }
+  .escopo-servicos-nota strong { color: var(--azul); font-style: normal; font-weight: 600; }
+
+  .escopo-edit-qtd {
+    text-align: right;
+    padding-top: 4pt;
+  }
+
+  .escopo-edit-qtd .micro {
+    display: block;
+    margin-bottom: 2pt;
+  }
+
+  .escopo-edit-qtd .qtd-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28pt;
+    color: var(--azul);
+    line-height: 1;
+    letter-spacing: -0.8pt;
+  }
+
+  .escopo-edit-corpo {
+    padding-top: 3mm;
+    border-top: 1px solid var(--cinza-200);
+  }
+
+  .escopo-descricao-edit {
+    font-size: 10pt;
+    color: var(--cinza-900);
+    line-height: 1.55;
+    font-weight: 300;
+    margin-bottom: 4mm;
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .escopo-descricao-edit strong {
+    font-weight: 600;
+    color: var(--grafite);
+  }
+
+  .escopo-incluso-edit {
+    margin-bottom: 5mm;
+  }
+
+  .escopo-incluso-edit .titulo-inclusos {
+    font-size: 8pt;
+    letter-spacing: 2pt;
+    text-transform: uppercase;
+    color: var(--verde-escuro);
+    font-weight: 700;
+    margin-bottom: 5pt;
+    display: block;
+  }
+
+  .escopo-incluso-edit ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .escopo-incluso-edit li {
+    font-size: 8.5pt;
+    padding: 4pt 8pt 4pt 14pt;
+    position: relative;
+    color: var(--cinza-900);
+    line-height: 1.4;
+    border-bottom: 1px solid var(--cinza-100);
+  }
+
+  .escopo-incluso-edit li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10pt;
+    width: 6pt;
+    height: 1.5px;
+    background: var(--verde);
+  }
+
+  .escopo-nota-edit {
+    margin-top: 3mm;
+    padding: 3mm 4mm;
+    background: var(--bg);
+    border-left: 2px solid var(--azul);
+    font-size: 8pt;
+    color: var(--cinza-700);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .escopo-nota-edit strong {
+    color: var(--azul);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .investimento-edit {
+    margin-top: 5mm;
+    padding: 5mm 0;
+    border-top: 2px solid var(--grafite);
+    border-bottom: 1px solid var(--cinza-200);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10mm;
+    align-items: end;
+  }
+
+  .investimento-edit-esq .micro {
+    display: block;
+    margin-bottom: 6pt;
+  }
+
+  .investimento-edit-esq .label-invest {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20pt;
+    color: var(--grafite);
+    letter-spacing: -0.5pt;
+    line-height: 1.1;
+    margin-bottom: 3pt;
+  }
+
+  .investimento-edit-esq .sublabel {
+    font-size: 9pt;
+    color: var(--cinza-700);
+  }
+
+  .investimento-edit-dir {
+    text-align: right;
+    line-height: 1;
+  }
+
+  .investimento-edit-dir .moeda {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 18pt;
+    color: var(--cinza-700);
+    vertical-align: top;
+    margin-right: 2pt;
+    font-style: italic;
+  }
+
+  .investimento-edit-dir .valor-grande {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 58pt;
+    color: var(--azul);
+    line-height: 0.85;
+    letter-spacing: -2.5pt;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .investimento-edit-dir .condicao-pq {
+    font-size: 8pt;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+    color: var(--verde-escuro);
+    font-weight: 600;
+    margin-top: 6pt;
+  }
+
+  .pagamento-edit {
+    margin-top: 4mm;
+    display: grid;
+    grid-template-columns: 30mm 1fr;
+    gap: 6mm;
+    padding-top: 3mm;
+  }
+
+  .pagamento-edit .micro {
+    color: var(--cinza-500);
+  }
+
+  .pagamento-edit p {
+    font-size: 9pt;
+    color: var(--cinza-700);
+    line-height: 1.55;
+  }
+
+  .pagamento-edit strong {
+    color: var(--azul);
+    font-weight: 600;
+  }
+
+  .termos-grid-edit {
+    margin-top: 2mm;
+    border-top: 1px solid var(--cinza-200);
+  }
+
+  .termo-edit {
+    display: grid;
+    grid-template-columns: 16mm 1fr;
+    gap: 6mm;
+    padding: 3.5mm 0;
+    border-bottom: 1px solid var(--cinza-200);
+  }
+
+  .termo-edit:last-child {
+    border-bottom: 2px solid var(--grafite);
+  }
+
+  .termo-numero-edit {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 20pt;
+    color: var(--verde);
+    line-height: 0.9;
+    letter-spacing: -1pt;
+  }
+
+  .termo-conteudo-edit .termo-titulo {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 11.5pt;
+    color: var(--grafite);
+    letter-spacing: -0.3pt;
+    margin-bottom: 3pt;
+    line-height: 1.2;
+  }
+
+  .termo-conteudo-edit .termo-titulo .destaque-titulo {
+    color: var(--azul);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .termo-conteudo-edit p {
+    font-size: 8.5pt;
+    color: var(--cinza-700);
+    line-height: 1.5;
+  }
+
+  .termo-conteudo-edit p strong {
+    color: var(--grafite);
+    font-weight: 600;
+  }
+
+  .cta-conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 8mm;
+  }
+
+  .cta-titulo-bloco {
+    margin-bottom: 12mm;
+    max-width: 165mm;
+  }
+
+  .cta-titulo-edit {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 56pt;
+    line-height: 0.95;
+    letter-spacing: -2pt;
+    color: var(--grafite);
+    margin-bottom: 6mm;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .cta-titulo-edit .linha {
+    display: block;
+  }
+
+  .cta-titulo-edit .destaque {
+    color: var(--azul);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .cta-titulo-edit .verde-acento {
+    color: var(--verde);
+  }
+
+  .cta-sub-edit {
+    font-size: 12pt;
+    color: var(--cinza-700);
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 140mm;
+    border-left: 2px solid var(--verde);
+    padding-left: 10pt;
+  }
+
+  .botoes-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 170mm;
+    border-top: 1px solid var(--cinza-200);
+  }
+
+  .btn-edit {
+    display: grid;
+    grid-template-columns: 14mm 1fr auto;
+    align-items: center;
+    gap: 6mm;
+    padding: 6mm 0;
+    border-bottom: 1px solid var(--cinza-200);
+    text-decoration: none;
+    color: var(--grafite);
+    transition: all 0.2s;
+  }
+
+  .btn-edit:hover {
+    background: var(--bg);
+  }
+
+  .btn-edit.primary {
+    background: var(--grafite);
+    color: white;
+    padding: 6mm 5mm;
+    border: none;
+    margin-bottom: 2mm;
+  }
+
+  .btn-edit.primary:hover {
+    background: var(--azul);
+  }
+
+  .btn-edit .btn-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22pt;
+    line-height: 1;
+    letter-spacing: -0.8pt;
+  }
+
+  .btn-edit.primary .btn-num {
+    color: var(--verde);
+  }
+
+  .btn-edit:not(.primary) .btn-num {
+    color: var(--cinza-300);
+  }
+
+  .btn-edit .btn-info .btn-tipo {
+    font-size: 7.5pt;
+    letter-spacing: 2pt;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 3pt;
+    color: var(--cinza-500);
+  }
+
+  .btn-edit.primary .btn-info .btn-tipo {
+    color: var(--verde);
+  }
+
+  .btn-edit .btn-info .btn-label {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18pt;
+    letter-spacing: -0.5pt;
+    line-height: 1.1;
+  }
+
+  .btn-edit.primary .btn-info .btn-label {
+    color: white;
+    font-weight: 400;
+  }
+
+  .btn-edit.primary .btn-info .btn-label .it {
+    color: var(--verde);
+    font-style: italic;
+  }
+
+  .btn-edit .btn-acao {
+    font-family: 'Fraunces', serif;
+    font-size: 22pt;
+    color: var(--cinza-300);
+    font-weight: 300;
+  }
+
+  .btn-edit.primary .btn-acao {
+    color: var(--verde);
+  }
+
+  .btn-edit:not(.primary):hover .btn-acao {
+    color: var(--azul);
+  }
+
+  .btn-edit.whatsapp {
+    background: #25D366;
+    color: white;
+    padding: 6mm 5mm;
+    border: none;
+    border-bottom: 1px solid var(--cinza-200);
+    margin-bottom: 2mm;
+    box-shadow: none;
+    border-radius: 2pt;
+  }
+
+  .btn-edit.whatsapp:hover {
+    background: #1faa54;
+  }
+
+  .btn-edit.whatsapp .btn-wa-icone {
+    width: 14mm;
+    height: 14mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .btn-edit.whatsapp .btn-wa-icone svg {
+    width: 9mm;
+    height: 9mm;
+    display: block;
+  }
+
+  .btn-edit.whatsapp .btn-info .btn-tipo {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 700;
+  }
+
+  .btn-edit.whatsapp .btn-info .btn-label {
+    color: white;
+    font-weight: 400;
+  }
+
+  .btn-edit.whatsapp .btn-info .btn-label .it {
+    color: white;
+    font-style: italic;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.6);
+    text-underline-offset: 3pt;
+  }
+
+  .btn-edit.whatsapp .btn-acao-pill {
+    background: white;
+    color: #1faa54;
+    font-family: 'Manrope', sans-serif;
+    font-size: 8pt;
+    font-weight: 800;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+    padding: 7pt 14pt;
+    border-radius: 99px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 5pt;
+    flex-shrink: 0;
+    box-shadow: none;
+  }
+
+  .btn-edit.agendar {
+    background: var(--branco);
+    border: 1px solid var(--cinza-200);
+    border-bottom: 1px solid var(--cinza-200);
+    padding: 6mm 5mm;
+    border-radius: 2pt;
+    margin-bottom: 2mm;
+  }
+
+  .btn-edit.agendar:hover {
+    background: white;
+    border-color: var(--azul);
+  }
+
+  .btn-edit.agendar .btn-cal-icone {
+    width: 14mm;
+    height: 14mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--azul);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .btn-edit.agendar .btn-cal-icone svg {
+    width: 8mm;
+    height: 8mm;
+    display: block;
+  }
+
+  .btn-edit.agendar .btn-info .btn-tipo {
+    color: var(--azul);
+    font-weight: 700;
+  }
+
+  .btn-edit.agendar .btn-info .btn-label .it {
+    color: var(--azul);
+    font-style: italic;
+  }
+
+  .btn-edit.agendar .btn-acao-pill {
+    background: var(--azul);
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    font-size: 8pt;
+    font-weight: 800;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+    padding: 7pt 14pt;
+    border-radius: 99px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 5pt;
+    flex-shrink: 0;
+    box-shadow: none;
+  }
+
+  .btn-edit.whatsapp,
+  .btn-edit.agendar {
+    grid-template-columns: 14mm 1fr auto;
+    gap: 5mm;
+  }
+
+  .contato-edit {
+    margin-top: 10mm;
+    padding-top: 6mm;
+    border-top: 2px solid var(--grafite);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8mm;
+    max-width: 170mm;
+  }
+
+  .contato-coluna .micro {
+    color: var(--cinza-500);
+    display: block;
+    margin-bottom: 5pt;
+  }
+
+  .contato-coluna .info-linha {
+    margin-bottom: 6pt;
+    font-size: 9pt;
+    color: var(--cinza-900);
+    line-height: 1.4;
+  }
+
+  .contato-coluna .info-linha strong {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 13pt;
+    color: var(--grafite);
+    display: block;
+    letter-spacing: -0.3pt;
+  }
+
+  .slogan-manifesto {
+    margin-top: 10mm;
+    padding-top: 6mm;
+    border-top: 2px solid var(--grafite);
+    position: relative;
+  }
+
+  .slogan-manifesto .slogan-rotulo {
+    color: var(--cinza-500);
+    display: block;
+    margin-bottom: 5mm;
+  }
+
+  .slogan-frase {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 32pt;
+    line-height: 1.05;
+    letter-spacing: -1pt;
+    color: var(--grafite);
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .slogan-frase .palavra {
+    display: inline-block;
+    margin-right: 8pt;
+  }
+
+  .slogan-frase .palavra.italic {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--azul);
+  }
+
+  .slogan-frase .dot {
+    color: var(--verde);
+    font-weight: 600;
+  }
+
+  .slogan-frase .dot-verde {
+    color: var(--verde);
+    font-weight: 600;
+  }
+
+  .footer-edit {
+    /* Rodape FIXO (D1): mesmo lugar em todas as paginas internas, 12mm da borda.
+       Nao se move com o conteudo. Se o conteudo crescer demais, ele invadiria a
+       faixa do rodape; quem impede e a compactacao do render.py, que mede o fim
+       do CONTEUDO contra o topo do rodape (nao mais a posicao do rodape). */
+    position: absolute;
+    left: 20mm;
+    right: 20mm;
+    bottom: 12mm;
+    padding-top: 6mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-top: 1px solid var(--cinza-200);
+  }
+
+  .footer-edit::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: 0;
+    width: 18mm;
+    height: 1px;
+    background: var(--verde);
+  }
+
+  .footer-edit .footer-info {
+    font-size: 7.5pt;
+    color: var(--cinza-500);
+    letter-spacing: 0.5pt;
+  }
+
+  .footer-edit .footer-pag {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 11pt;
+    color: var(--azul);
+  }
+
+  .footer-edit .footer-pag .total {
+    color: var(--cinza-500);
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page capa">
+  <div class="capa-top">
+    <img src="logo_super_seg.png" alt="Super Seg" class="capa-logo">
+    <div class="capa-meta-top">
+      <span class="micro">Proposta Comercial</span>
+      <div class="capa-numero">N.<span style="font-style:italic;color:var(--verde);">º</span> 35341</div>
+    </div>
+  </div>
+
+  <div class="linha-editorial"></div>
+
+  <div class="secao-numero">— 01 / Apresentação</div>
+  <span class="eyebrow eyebrow-verde">Medicina e Segurança do Trabalho</span>
+
+  <div class="capa-conteudo">
+    <h1 class="display-xl capa-titulo">
+      <span class="linha">Sua empresa</span>
+      <span class="linha"><span class="destaque">super segura</span><span class="verde-dot">,</span></span>
+      <span class="linha">do laudo</span>
+      <span class="linha italic">à entrega.</span>
+    </h1>
+
+    <p class="capa-subtitulo">
+      Laudo Técnico de Insalubridade e Periculosidade (LTIP) elaborado por especialistas, em conformidade integral com as NRs 15 e 16 — protegendo sua operação contra multas, autuações e passivos trabalhistas.
+    </p>
+
+    <div class="capa-slogan">
+      <span class="slogan-marca">Acreditar</span> <span class="slogan-sep">·</span> <span class="slogan-marca">Evoluir</span> <span class="slogan-sep">·</span> <span class="slogan-marca">Conquistar</span>
+    </div>
+  </div>
+
+  <div class="ficha-cliente">
+    <div class="ficha-coluna">
+      <span class="micro">Preparada para</span>
+      <div class="conteudo">
+        <strong>AGIS Construção S.A.</strong>
+      </div>
+    </div>
+    <div class="ficha-coluna">
+      <span class="micro">CNPJ</span>
+      <div class="conteudo">61.099.826/0012-05</div>
+    </div>
+    <div class="ficha-coluna">
+      <span class="micro">A/C</span>
+      <div class="conteudo">Eduarda<br><span style="color:var(--cinza-500);font-size:8.5pt;">FISCAL@GRUPOAGIS.COM.BR</span></div>
+    </div>
+  </div>
+
+  <div class="capa-bottom">
+    <div class="capa-data-bloco">
+      <div class="item">
+        <span class="micro">Emitida em</span>
+        <div class="valor">19.05.2026</div>
+      </div>
+      <div class="item validade">
+        <span class="micro">Válida até</span>
+        <div class="valor">26.05.2026</div>
+      </div>
+    </div>
+    <div class="capa-marca-dagua">
+      <em>Documentos com assinatura digital ICP-Brasil</em>
+      <strong>Super Seg · Desde 2013</strong>
+    </div>
+  </div>
+</div>
+
+<div class="page pagina-interna">
+  <div class="header-interno">
+    <img src="logo_super_seg.png" alt="Super Seg">
+    <div class="ref-direita">
+      Proposta <span class="num">Nº 35341</span><br>
+      AGIS Construção S.A.
+    </div>
+  </div>
+
+  <div class="secao-cabecalho">
+    <div class="esquerda">
+      <div class="secao-numero">— 02 / Quem somos</div>
+      <span class="eyebrow eyebrow-verde">Especialistas em SST</span>
+      <h2 class="display-lg" style="margin-top: 4pt; font-size: 32pt;">
+        13 anos<br>
+        protegendo<br>
+        <span class="italic" style="color:var(--azul);">quem constrói</span><br>
+        o Brasil.
+      </h2>
+    </div>
+    <div class="direita">
+      <p class="lead-pequeno">
+        A Super Seg é referência em Medicina e Segurança do Trabalho com mais de uma década de atuação técnica, agilidade na entrega e compromisso com a conformidade legal. Trabalhamos para que sua empresa opere com segurança jurídica, ambiental e humana.
+      </p>
+    </div>
+  </div>
+
+  <div class="stats-editorial">
+    <div class="stat-edit">
+      <div class="numero-grande">13<span class="sufixo">+</span></div>
+      <div class="stat-label">Anos de mercado<br>em SST</div>
+    </div>
+    <div class="stat-edit">
+      <div class="numero-grande">100<span class="sufixo">%</span></div>
+      <div class="stat-label">Conformidade com<br>as NRs vigentes</div>
+    </div>
+    <div class="stat-edit">
+      <div class="numero-grande" style="font-size:40pt;">RedeTV<span class="sufixo">!</span></div>
+      <div class="stat-label">Reportagem especial<br>em rede nacional</div>
+    </div>
+  </div>
+
+  <div class="pilares-titulo">
+    <span class="eyebrow eyebrow-azul">Por que a Super Seg</span>
+    <h3 class="display-md" style="margin-top:4pt;">Quatro pilares <span class="italic" style="color:var(--verde);">inegociáveis.</span></h3>
+  </div>
+
+  <div class="pilares-grid">
+    <div class="pilar">
+      <div class="pilar-numero">i.</div>
+      <div class="pilar-titulo">Segurança jurídica</div>
+      <p class="pilar-texto">Laudos tecnicamente robustos que protegem sua empresa em fiscalizações, ações trabalhistas e auditorias do MTE.</p>
+    </div>
+    <div class="pilar">
+      <div class="pilar-numero">ii.</div>
+      <div class="pilar-titulo">Agilidade na entrega</div>
+      <p class="pilar-texto">Previsão de entrega de até 10 dias úteis após a visita técnica, sem comprometer o rigor metodológico.</p>
+    </div>
+    <div class="pilar">
+      <div class="pilar-numero">iii.</div>
+      <div class="pilar-titulo">Rigor técnico</div>
+      <p class="pilar-texto">Equipe especializada, com aplicação criteriosa das NR-15 e NR-16 e metodologias reconhecidas pelo MTE.</p>
+    </div>
+    <div class="pilar">
+      <div class="pilar-numero">iv.</div>
+      <div class="pilar-titulo">Compromisso ESG</div>
+      <p class="pilar-texto">Entregas 100% digitais com certificação ICP-Brasil, reduzindo o uso de papel e a pegada ambiental.</p>
+    </div>
+  </div>
+
+  <div class="midia-editorial">
+    <div class="midia-header">
+      <div class="midia-titulo-edit">Conheça a Super Seg <span class="italic">por dentro.</span></div>
+      <div class="midia-subtitulo">— Clique nos itens abaixo para<br>acessar nossos materiais.</div>
+    </div>
+
+    <a href="https://drive.google.com/file/d/1gq9qP2qezHOQrfWCDHfzwcJjhYi-CJYm/view" target="_blank" rel="noopener noreferrer" class="midia-link-edit">
+      <div class="num-link">i.</div>
+      <div class="tag-link">Vídeo</div>
+      <div class="titulo-link-edit">Apresentação institucional Super Seg</div>
+      <div class="botao-abrir">Acessar <span class="seta-abrir">→</span></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1Ohfkno9lFMpYrkgDdDbBZf7IjcrZuX2r/view" target="_blank" rel="noopener noreferrer" class="midia-link-edit">
+      <div class="num-link">ii.</div>
+      <div class="tag-link">Slides</div>
+      <div class="titulo-link-edit">Apresentação completa em slides</div>
+      <div class="botao-abrir">Acessar <span class="seta-abrir">→</span></div>
+    </a>
+    <a href="https://drive.google.com/file/d/18Ki7YOydqqtaXxiTK0wuyLfpfaE97bWb/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="midia-link-edit">
+      <div class="num-link">iii.</div>
+      <div class="tag-link">TV</div>
+      <div class="titulo-link-edit">Reportagem especial — RedeTV!</div>
+      <div class="botao-abrir">Acessar <span class="seta-abrir">→</span></div>
+    </a>
+  </div>
+
+  <div class="footer-edit">
+    <span class="footer-info">SUPER SEG · CNPJ 18.797.265/0001-28 · COMERCIAL@SUPER-SEG.COM</span>
+    <span class="footer-pag">02 <span class="total">/ 05</span></span>
+  </div>
+</div>
+
+<div class="page pagina-interna">
+  <div class="header-interno">
+    <img src="logo_super_seg.png" alt="Super Seg">
+    <div class="ref-direita">
+      Proposta <span class="num">Nº 35341</span><br>
+      AGIS Construção S.A.
+    </div>
+  </div>
+
+  <div class="secao-cabecalho cab-escopo">
+    <div class="esquerda">
+      <div class="secao-numero">— 03 / Escopo Técnico</div>
+      <span class="eyebrow eyebrow-verde">O que está incluído</span>
+      <h2 class="display-lg display-escopo" style="margin-top: 6pt;">
+        O escopo<br>
+        técnico,<br>
+        <span class="italic" style="color:var(--azul);">por completo.</span>
+      </h2>
+    </div>
+    <div class="direita">
+      <p class="lead-pequeno">
+        Após análise do cenário da AGIS Construção S.A., desenhamos o seguinte escopo técnico para atender às necessidades específicas de conformidade da sua operação.
+      </p>
+    </div>
+  </div>
+
+  <div class="escopo-edit">
+    <div class="escopo-edit-header">
+      <div class="escopo-edit-numero">01</div>
+      <div class="escopo-edit-titulo-bloco">
+        <span class="micro" style="color:var(--verde-escuro);">LTIP · NR-15 e NR-16</span>
+        <h3 class="escopo-edit-titulo">Laudo Técnico de Insalubridade <span class="italic" style="color:var(--azul);">e Periculosidade</span></h3>
+      </div>
+      <div class="escopo-edit-qtd">
+        <span class="micro">Qtde.</span>
+        <div class="qtd-num">01</div>
+      </div>
+    </div>
+
+    <div class="escopo-edit-corpo">
+      <p class="escopo-descricao-edit">
+        Elaboração do <strong>Laudo Técnico de Insalubridade e Periculosidade</strong> em conformidade integral com as Normas Regulamentadoras 15 e 16, contemplando análise técnica, visita ao local e emissão do documento oficial assinado por profissional habilitado.
+      </p>
+
+      <div class="escopo-incluso-edit">
+        <span class="titulo-inclusos">— O que está incluso</span>
+        <ul>
+          <li>Elaboração completa do Laudo Técnico conforme NR-15 e NR-16</li>
+          <li>Visita técnica ao endereço Av. Secondino, 246 — Jardim Independência</li>
+          <li>Análise do cenário considerando de 50 a 70 colaboradores</li>
+          <li>Emissão do documento com certificação digital ICP-Brasil</li>
+          <li>Entrega 100% digital em até 10 dias úteis</li>
+          <li>Suporte técnico pós-entrega (7 dias para ajustes)</li>
+        </ul>
+      </div>
+
+      <div class="escopo-nota-edit">
+        <strong>Observação técnica.</strong> Caso, durante a visita, seja identificada a necessidade de análises quantitativas (uso de dosímetros, bombas de amostragem ou sensores), os equipamentos e o serviço correspondente serão cotados em separado, mediante aprovação prévia.
+      </div>
+    </div>
+  </div>
+
+  <div class="investimento-edit">
+    <div class="investimento-edit-esq">
+      <span class="micro" style="color:var(--cinza-500);">Investimento total</span>
+      <div class="label-invest">Proposta <span class="italic" style="color:var(--azul);">fechada.</span></div>
+      <div class="sublabel">Laudo Técnico de Insalubridade e Periculosidade</div>
+    </div>
+    <div class="investimento-edit-dir">
+      <span class="moeda">R$</span><span class="valor-grande">1.750</span>
+      <div class="condicao-pq">— À vista · sem taxa adicional</div>
+    </div>
+  </div>
+
+  <div class="pagamento-edit">
+    <span class="micro">Forma de pagamento</span>
+    <p>
+      A Nota Fiscal será emitida juntamente com o boleto bancário, com vencimento de <strong>30 dias</strong> a contar da emissão. NF e documentação técnica serão enviadas simultaneamente, com prazo de 7 dias para eventuais ajustes.
+    </p>
+  </div>
+
+  <div class="footer-edit">
+    <span class="footer-info">SUPER SEG · CNPJ 18.797.265/0001-28 · COMERCIAL@SUPER-SEG.COM</span>
+    <span class="footer-pag">03 <span class="total">/ 05</span></span>
+  </div>
+</div>
+
+<div class="page pagina-interna">
+  <div class="header-interno">
+    <img src="logo_super_seg.png" alt="Super Seg">
+    <div class="ref-direita">
+      Proposta <span class="num">Nº 35341</span><br>
+      AGIS Construção S.A.
+    </div>
+  </div>
+
+  <div class="secao-cabecalho">
+    <div class="esquerda">
+      <div class="secao-numero">— 04 / Termos e Condições</div>
+      <span class="eyebrow eyebrow-verde">Parceria transparente</span>
+      <h2 class="display-lg" style="margin-top: 6pt;">
+        Tudo claro,<br>
+        <span class="italic" style="color:var(--azul);">do começo</span><br>
+        ao fim.
+      </h2>
+    </div>
+    <div class="direita">
+      <p class="lead-pequeno">
+        Para garantir uma parceria sólida e sem surpresas, deixamos claros desde já todos os pontos contratuais que regem esta proposta.
+      </p>
+    </div>
+  </div>
+
+  <div class="termos-grid-edit">
+    <div class="termo-edit">
+      <div class="termo-numero-edit">i.</div>
+      <div class="termo-conteudo-edit">
+        <h4 class="termo-titulo">Assinatura digital e <span class="destaque-titulo">entrega de documentos</span></h4>
+        <p>Conforme a Portaria nº 211/2019, Art. 1º, a Super Seg utiliza certificação digital padrão ICP-Brasil para todos os documentos de SMT. As entregas são 100% eletrônicas. Caso necessite vias físicas, basta nos informar previamente.</p>
+      </div>
+    </div>
+
+    <div class="termo-edit">
+      <div class="termo-numero-edit">ii.</div>
+      <div class="termo-conteudo-edit">
+        <h4 class="termo-titulo">Nota fiscal</h4>
+        <p>A NF será emitida exclusivamente para o CNPJ informado nesta proposta. Caso o CNPJ de faturamento seja diferente, solicitamos o envio antecipado para revisão.</p>
+      </div>
+    </div>
+
+    <div class="termo-edit">
+      <div class="termo-numero-edit">iii.</div>
+      <div class="termo-conteudo-edit">
+        <h4 class="termo-titulo">Exames ocupacionais</h4>
+        <p>Exames médicos não estão inclusos nesta proposta. Eles são cobrados à parte, conforme definido no PCMSO e seguindo a tabela de preços da clínica credenciada onde o atendimento for realizado.</p>
+      </div>
+    </div>
+
+    <div class="termo-edit">
+      <div class="termo-numero-edit">iv.</div>
+      <div class="termo-conteudo-edit">
+        <h4 class="termo-titulo">Análises quantitativas <span class="destaque-titulo">— equipamentos</span></h4>
+        <p>Equipamentos utilizados em análises quantitativas (dosímetros, bombas de amostragem, sensores etc.) que sejam extraviados, danificados ou não devolvidos — por qualquer motivo, incluindo perdas, furtos, incêndios ou desastres — são de responsabilidade integral da contratante.</p>
+      </div>
+    </div>
+
+    <div class="termo-edit">
+      <div class="termo-numero-edit">v.</div>
+      <div class="termo-conteudo-edit">
+        <h4 class="termo-titulo">Escopo contratado</h4>
+        <p>Todos os serviços estão descritos e quantificados nesta proposta. Inclusões adicionais (treinamentos, cursos, outras NRs, registros específicos) demandam revisão de escopo, prazos e valores. Profissionais em mão de obra temporária atuam sob contrato de prestação de serviços.</p>
+      </div>
+    </div>
+
+    <div class="termo-edit">
+      <div class="termo-numero-edit">vi.</div>
+      <div class="termo-conteudo-edit">
+        <h4 class="termo-titulo">Cancelamento</h4>
+        <p>Após o aceite formal, o cancelamento por iniciativa da contratante implica multa compensatória de <strong>50% do valor total contratado</strong> ou, alternativamente, o reembolso integral das despesas comprovadas e dos serviços executados até a data — prevalecendo o maior valor. Esta cláusula resguarda os custos operacionais, técnicos e administrativos já assumidos.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-edit">
+    <span class="footer-info">SUPER SEG · CNPJ 18.797.265/0001-28 · COMERCIAL@SUPER-SEG.COM</span>
+    <span class="footer-pag">04 <span class="total">/ 05</span></span>
+  </div>
+</div>
+
+<div class="page pagina-interna">
+  <div class="header-interno">
+    <img src="logo_super_seg.png" alt="Super Seg">
+    <div class="ref-direita">
+      Proposta <span class="num">Nº 35341</span><br>
+      Válida até 26/05/2026
+    </div>
+  </div>
+
+  <div class="cta-conteudo">
+    <div class="secao-numero">— 05 / Próximos Passos</div>
+    <span class="eyebrow eyebrow-verde" style="display:block;margin-top:4pt;margin-bottom:12pt;">Aprovação em um clique</span>
+
+    <div class="cta-titulo-bloco">
+      <h2 class="cta-titulo-edit">
+        <span class="linha">Quero minha empresa</span>
+        <span class="linha"><span class="destaque">super segura</span><span class="verde-acento">.</span></span>
+      </h2>
+      <p class="cta-sub-edit">
+        Assim que recebermos seu aceite, daremos início imediato à programação técnica, emissão da NF/boleto e agendamento da visita.
+      </p>
+    </div>
+
+    <div class="botoes-edit">
+      <a href="mailto:comercial@super-seg.com?subject=APROVADO%20-%20Proposta%2035341%20-%20AGIS%20Constru%C3%A7%C3%A3o&body=Ol%C3%A1%2C%20Super%20Seg!%0A%0AAprovamos%20a%20Proposta%20n%C2%BA%2035341%20referente%20ao%20Laudo%20T%C3%A9cnico%20de%20Insalubridade%20e%20Periculosidade%20(LTIP)%20-%20NR-15%20e%20NR-16.%0A%0AEmpresa%3A%20AGIS%20Constru%C3%A7%C3%A3o%20S.A.%0ACNPJ%3A%2061.099.826%2F0012-05%0AValor%3A%20R%24%201.750%2C00%0A%0APor%20favor%2C%20podem%20dar%20sequ%C3%AAncia%20%C3%A0%20programa%C3%A7%C3%A3o%20t%C3%A9cnica%20e%20emiss%C3%A3o%20da%20NF%2Fboleto.%0A%0AAguardo%20retorno." target="_blank" rel="noopener noreferrer" class="btn-edit primary">
+        <div class="btn-num">i.</div>
+        <div class="btn-info">
+          <div class="btn-tipo">Aprovar por e-mail</div>
+          <div class="btn-label">Aprovar <span class="it">agora</span></div>
+        </div>
+        <div class="btn-acao">→</div>
+      </a>
+
+      <a href="https://wa.me/551134215870?text=Ol%C3%A1%2C%20Super%20Seg!%20Aprovamos%20a%20Proposta%20n%C2%BA%2035341%20(LTIP%20-%20AGIS%20Constru%C3%A7%C3%A3o%20S.A.).%20Podemos%20dar%20sequ%C3%AAncia%3F" target="_blank" rel="noopener noreferrer" class="btn-edit whatsapp">
+        <div class="btn-wa-icone">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#25D366">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+          </svg>
+        </div>
+        <div class="btn-info">
+          <div class="btn-tipo">Clique para conversar agora</div>
+          <div class="btn-label">Falar com a Super Seg <span class="it">no WhatsApp</span></div>
+        </div>
+        <div class="btn-acao-pill">Conversar →</div>
+      </a>
+
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2q8jkAjW5aSUWQHbNYhEUBC_EHDJaAiLVVTspUl1Mj8D0JMnCLLrgwUoHTjIu-Nkrs1ev0BHVA" target="_blank" rel="noopener noreferrer" class="btn-edit agendar">
+        <div class="btn-cal-icone">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
+            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5zm2 4h5v5H7v-5z"/>
+          </svg>
+        </div>
+        <div class="btn-info">
+          <div class="btn-tipo">Clique para escolher um horário</div>
+          <div class="btn-label">Agendar <span class="it">reunião</span> de 10 min</div>
+        </div>
+        <div class="btn-acao-pill">Agendar →</div>
+      </a>
+    </div>
+
+    <div class="contato-edit">
+      <div class="contato-coluna">
+        <span class="micro">Fale agora com a Super Seg</span>
+        <div class="info-linha">
+          <strong>(11) 3421-5870</strong>
+          comercial@super-seg.com
+        </div>
+      </div>
+      <div class="contato-coluna">
+        <span class="micro">Visite-nos</span>
+        <div class="info-linha">
+          Rua dos Bandeirantes, 405<br>
+          Vila Bocaina · Mauá / SP · 09310-360
+        </div>
+      </div>
+    </div>
+
+    <div class="slogan-manifesto">
+      <span class="micro slogan-rotulo">— Nossos princípios</span>
+      <div class="slogan-frase">
+        <span class="palavra">Acreditar<span class="dot">.</span></span>
+        <span class="palavra">Evoluir<span class="dot">.</span></span>
+        <span class="palavra italic">Conquistar<span class="dot-verde">.</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-edit">
+    <span class="footer-info">SUPER SEG · MEDICINA E SEGURANÇA DO TRABALHO · DESDE 2013</span>
+    <span class="footer-pag">05 <span class="total">/ 05</span></span>
+  </div>
+</div>
+
+</body>
+</html>

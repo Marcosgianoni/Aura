@@ -1,0 +1,76 @@
+{
+  "variante": "servicos",
+  "numero": "36148",
+  "cliente": "GD - GERACAO DISTRIBUIDA PARTICIPACOES S.A",
+  "cliente_caps": "GD - GERACAO DISTRIBUIDA PARTICIPACOES S.A",
+  "cliente_display": "GD Geração Distribuída",
+  "cnpj": "34.656.852/0001-53",
+  "ac_contato": "Tadeu Matias",
+  "ac_email": "TADEU.MATIAS@RENOVABPO.COM.BR",
+  "data_emissao": "03.07.2026",
+  "validade": "10.07.2026",
+  "validade_barra": "10/07/2026",
+  "valor_grande": "6.000",
+  "valor_moeda": "R$ 6.000",
+  "total_int": "6.000",
+  "total_cent": "00",
+  "desconto": 500.0,
+  "service_summary": "PGR, PCMSO, LTCAT, LTP e Questionário Psicossocial",
+  "service_summary_wa": "PGR + PCMSO + LTCAT + LTP + Psicossocial",
+  "lead_apresentacao": "Pacote completo de conformidade em SST: PGR, PCMSO, LTCAT, LTP e Questionário Psicossocial NR-01, estruturado para apoiar a gestão técnica e documental da empresa.",
+  "setor_verbo": "move",
+  "pilares": {
+    "juridica": "Programas, laudos e documentação técnica em conformidade que fortalecem a empresa em auditorias, fiscalizações e rotinas trabalhistas.",
+    "agilidade": "Entrega dos documentos em até 7 dias úteis após os levantamentos, conforme informado no orçamento, sem comprometer o rigor técnico.",
+    "tecnico": "Equipe especializada na elaboração de programas, laudos técnicos e diagnóstico psicossocial, conforme os itens contratados.",
+    "esg": "Entregas digitais com certificação ICP-Brasil, reduzindo o uso de papel e mantendo rastreabilidade documental."
+  },
+  "escopo_tag": "PACOTE DE CONFORMIDADE SST",
+  "escopo_titulo": "PGR, PCMSO, LTCAT, LTP <span class=\"italic\">e Psicossocial</span>",
+  "escopo_intro": "Após análise do cenário da GD - GERACAO DISTRIBUIDA PARTICIPACOES S.A, organizamos o escopo contratado em cinco itens técnicos, com quantidades e valores detalhados.",
+  "escopo_descricao": "Programas, laudos e questionário técnico de SST especificados por item, considerando 114 colaboradores conforme o orçamento.",
+  "escopo_nota": "O orçamento considera 114 colaboradores. Para LTCAT e LTP, as quantificações serão realizadas conforme condições do cliente.",
+  "invest_sublabel": "PGR · PCMSO · LTCAT · LTP · Questionário Psicossocial",
+  "itens": [
+    {
+      "servico": "PGR",
+      "norma": "NR-01",
+      "especificacao": "Programa de Gerenciamento de Riscos, considerando 114 colaboradores, incluso ART.",
+      "qtd": "1",
+      "vlr_unit": "1.120,00",
+      "subtotal": "1.120,00"
+    },
+    {
+      "servico": "PCMSO",
+      "norma": "NR-07",
+      "especificacao": "Programa de Controle Médico e Saúde Ocupacional com base nos riscos do PGR, considerando 114 colaboradores.",
+      "qtd": "1",
+      "vlr_unit": "1.085,00",
+      "subtotal": "1.085,00"
+    },
+    {
+      "servico": "LTCAT",
+      "norma": "DECRETO CORRESPONDENTE",
+      "especificacao": "Laudo Técnico das Condições Ambientais de Trabalho, considerando 114 colaboradores.",
+      "qtd": "1",
+      "vlr_unit": "1.640,00",
+      "subtotal": "1.640,00"
+    },
+    {
+      "servico": "LTP",
+      "norma": "DECRETO CORRESPONDENTE",
+      "especificacao": "Laudo Técnico de Periculosidade, considerando 114 colaboradores.",
+      "qtd": "1",
+      "vlr_unit": "1.620,00",
+      "subtotal": "1.620,00"
+    },
+    {
+      "servico": "Questionário Psicossocial",
+      "norma": "NR-01",
+      "especificacao": "Elaboração e aplicação de questionário técnico para identificação de riscos psicossociais, com dashboard analítico e interpretação dos resultados para 114 colaboradores.",
+      "qtd": "1",
+      "vlr_unit": "1.035,00",
+      "subtotal": "1.035,00"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+especialista-propostas-super-seg
+version: 4.1.3
+date: 2026-07-03
+
+Mudancas na 4.1.3 (valor_moeda derivado; regra de centavos nas mensagens)
+- valor_moeda e valor_grande passam a ser DERIVADOS pelo sub.py a partir do
+  total (bloco editorial, total_int/cent da tabela, ou normalizacao do
+  proprio campo na variante single). O agente ainda escreve os campos, mas
+  o script sobrescreve: fim da classe de erro de duplicata dessincronizada
+  (a fixture de 4 itens estava com valor_moeda defasado do total, provado).
+- Com isso a regra de centavos vale tambem nos CTAs (mailto/WhatsApp) e o
+  SKILL.md instrui a mesma regra nas mensagens de entrega ao usuario
+  ("Valor total: R$ 1.430", nunca "R$ 1.430,00").
+- Goldens atualizados com valores limpos; fixture 4 itens ressincronizada.
+- Pedido do Marcos em 03/07 apos validar a 4.1.2 em producao (GD e Jose
+  Norberto aprovadas; o ,00 remanescente estava na mensagem, nao no PDF).
+
+Mudancas na 4.1.2 (centavos zero suprimidos tambem na tabela legada)
+- A regra de centavos do editorial (suprimir somente quando zero) passa a
+  valer na tabela legada inteira: colunas Vlr. unit. e Subtotal dos itens
+  (reformatadas mecanicamente via parse_moeda + fmt_moeda), valor liquido
+  total do tfoot e valor grande do investimento (spans de centavos agora
+  condicionais, vazios quando total_cent == "00").
+- O prefixo "R$ " das colunas sai do fragmento e passa a vir do fmt_moeda,
+  eliminando a duplicidade de formatacao.
+- Centavos reais (ex. 310,50) continuam impressos normalmente.
+- Pedido do Marcos em 03/07 apos validar GD 36148 e Jose Norberto 36127
+  em producao (linha de desconto e editorial de 4 itens aprovados).
+
+Mudancas na 4.1.1 (desconto mecanico e piso da tabela; licoes GD 36148 e
+Jose Norberto 36127 dos primeiros runs reais da 4.1.0)
+- Desconto do orcamento vira campo de dados de primeira classe: `desconto`
+  (NUMERO) no bloco editorial ou no topo do campos legado. sub.py renderiza
+  a linha de resumo (Soma dos itens / Desconto conforme orcamento) nos dois
+  layouts e estende a guarda aritmetica para soma menos desconto igual ao
+  total. Origem: GD 36148 saiu com itens somando 6.500 e total 6.000 sem
+  linha de desconto visivel (o desconto de 500 existe no orcamento).
+- Tabela legada ganha piso: exige 5 a 7 itens. Com 1 a 4 o sub.py aborta
+  mandando usar pagina3_editorial, fechando a rota que o agente usou na
+  Jose Norberto 36127 (4 itens sairam em tabela em vez do editorial).
+  Registro da licao repetida: instrucao no SKILL.md nao segura o agente,
+  so mecanica de script segura (mesma causa raiz do caso HBS 36093).
+- Guarda aritmetica tambem na tabela legada (parse_moeda para os campos
+  string pt-BR); antes so o editorial validava a soma.
+- Goldens: campos_rogg_servicos.json migrado para campos_rogg_editorial.json
+  (3 itens, formato editorial); novo golden real campos_gd_tabela.json
+  (GD 36148: 5 itens, desconto 500) exercitando a linha de desconto.
+- SKILL.md instrui: desconto do orcamento nunca omitido, nunca inventado.
+
+Mudancas na 4.1.0 (cabecalho compacto e selecao por quantidade de itens)
+- Topo das paginas internas: padding superior 14mm -> 10mm (todas as paginas;
+  o rodape fixo D1 nao se move, o miolo util cresce 4mm).
+- Pagina 3: manchete compacta (.display-escopo 34pt, so na pg3; paginas 2/4/5
+  seguem 40pt), coluna esquerda alargada (.cab-escopo 1.35fr, gap 10mm) para
+  "por completo." caber em uma linha, margens do cabecalho 7/5mm. Aplicado na
+  variante single e nos dois fragmentos servicos. Ganho estimado ~28mm na pg3.
+- Lever espelhado no render.py para .cab-escopo (a compactacao nao desfaz as
+  margens compactas). A manchete nao e rampada.
+- Selecao da pagina 3 por quantidade de itens, mecanica no sub.py:
+  1 a 4 itens = editorial (premissa sobe de 3 para 4 com o espaco ganho,
+  validacao visual pendente); 5 a 7 = tabela legada (oficializada apos o caso
+  HBS 36093, que rodou nela por fallback sem trava); 8+ = aborta e o agente
+  reporta em vez de gerar.
+- Fixture de teste examples/campos_teste_editorial_4itens.json (dados
+  sinteticos rotulados, nao enviar a cliente) para validar o encaixe de 4.
+- Origem: ajustes pedidos pelo Marcos em 03/07 apos o run HBS 36093.
+
+Mudancas na 4.0.0 (pagina 3 editorial da variante servicos)
+- Pagina 3 da variante servicos vira layout editorial em blocos por item
+  (numero grande verde, eyebrow de categoria, titulo serifado com termo em
+  italico azul, descricao com negritos seletivos, checklist 2x2 com
+  marcadores verdes, subtotal do item a direita sob rotulo QTD. NN), com
+  cabecalho ESCOPO CONTRATADO · N ITENS / TOTAL. Fragmento novo
+  pg3_servicos_editorial.html, autocontido (CSS proprio prefixado ed-).
+- Novo contrato de dados: bloco pagina3_editorial no campos.json com valores
+  monetarios NUMERICOS; toda formatacao e do sub.py (fmt_moeda/fmt_partes),
+  centavos suprimidos somente quando forem zero.
+- Validacoes duras no sub.py: maximo 3 itens (4+ reporta e nao gera),
+  titulo_italico substring do titulo, checklist <= 4, preco_unitario x qtd
+  igual ao preco, soma dos itens igual ao total (fidelidade aritmetica),
+  forma_pagamento origem orcamento exige texto.
+- Trava da manchete: setor_verbo contendo "Brasil" aborta (o template ja
+  fecha com "o Brasil."); corrige o defeito herdado do run CBC hibrido.
+- forma_pagamento agora e mecanica tambem na variante servicos (token
+  PAGAMENTO_HTML): canonico por default, texto do orcamento prevalece.
+- Tabela antiga mantida SOMENTE como fallback interno para campos legados;
+  colisao de valores corrigida (colgroup unit/sub 21/23mm). Fica registrada
+  a substituicao da tabela pelo editorial como caminho padrao da variante.
+- render.py: levers de compactacao para as classes ed- (pisos respeitando o
+  minimo de 8pt do Poppins). Arquitetura D1 e guardas do qa.py intocados.
+- Golden novo: examples/campos_cbc_editorial.json (CBC 30891). Decisoes do
+  Marcos em 03/07: typo do orcamento corrigido na proposta (Protecao
+  Respiratoria); prazos mesclados sem contradicao (30 dias NF/boleto +
+  entrega em ate 20 dias uteis + 7 dias de ajustes; o 7-dias-uteis do
+  boilerplate fica fora por conflitar com os 20 do cabecalho).
+- Layout construido a partir da especificacao da secao 6 da passagem de
+  conhecimento; passe de ajuste fino visual pendente contra o PDF de
+  referencia do projeto Claude (arquivo nao recebido ate esta versao).
+
+Mudanca adicional na 3.3.2 (mesmo dia)
+- Regra de pagamento: o texto canonico de 30 dias/NF/boleto vira DEFAULT; se o
+  orcamento especificar outra condicao (ex. 50% entrada / 50% conclusao), ela
+  prevalece na pagina 3 e o copy da pagina 5 (CTA/e-mail de aprovacao) e
+  ajustado para nao contradizer. Origem: patch do self-improvement do Hermes
+  apos o orcamento Flavia 36142, revisado e adotado no canal canonico (a edicao
+  silenciosa na VPS foi substituida por esta versao). Alinhado ao principio de
+  fidelidade ao orcamento.
+- Removida do SKILL.md a mencao residual a "eSocial 12-month rule" (a regra
+  automatica foi removida na 3.1.0; ficara so o gatilho opt-in explicito).
+
+Mudanca adicional na 3.3.1 (mesmo dia)
+- render.py: no MAX_ITER, excesso residual pequeno (<= RESIDUO_TOL_PX=16px) vira
+  observacao branda em vez de AVISO. A medicao usa bounding box (padding/borda
+  alem do texto), entao residuo pequeno e caixa, nao tinta; o veredito real de
+  sobreposicao e do qa.py (guarda da faixa do rodape). Evita alarme falso em
+  todo run da variante servicos.
+
+Mudancas desde a 3.2.2 (arquitetura D1: moldura fixa, miolo elastico)
+- Rodape FIXO: .footer-edit passa a ser absoluto, a 12mm da borda, em todas as
+  paginas internas. Mesmo lugar em todas as paginas, nao anda com o conteudo.
+  O header ja era fixo por construcao (primeiro elemento, padding constante).
+- .pagina-interna reserva a faixa do rodape: padding inferior 12mm -> 25mm.
+- render.py muda o alvo da medicao: em vez de olhar onde o rodape parou, mede
+  onde o CONTEUDO termina e exige folga minima (GAP_MIN_PX=8) ate o topo do
+  rodape. CLIP_LIMIT_PX deixa de existir. Capa segue fora da medicao.
+- Pisos de compactacao aprofundados (secao-cabecalho, pilar, stats/midia,
+  termo-edit, lead): com o rodape fixo o miolo util encolheu ~13mm e a pagina 2
+  (a mais cheia) precisa de mais curso para caber. Ela fica um pouco mais densa
+  em compactacao maxima, decisao registrada com o usuario.
+- qa.py: novo guarda de sobreposicao. Na faixa dos ultimos 50pt das paginas 2 a
+  5 so pode existir texto do rodape (caixa alta/digitos); minuscula na faixa =
+  conteudo sob o rodape = REPROVADO. Implementado com pypdfium2 (charboxes em
+  pontos reais; o visitor do pypdf nao da coordenadas confiaveis em PDF do
+  Chromium). Validado: v7 aprova; v6 defeituoso reprova nos dois guardas.
+
+Historico recente: 3.2.2 (guarda de paginacao no QA), 3.2.1 (colgroup na tabela
+servicos, capa fora da medicao), 3.2.0/3.1.0 (fonte estatica, 8pt, fidelidade ao
+orcamento, agente nao le scripts nem faz loop de patch).

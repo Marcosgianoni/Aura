@@ -1,0 +1,152 @@
+<style>
+  /* Pagina 3 editorial (4.0.0). Classes prefixadas com ed- para nao colidir com o
+     template base. Os levers de compactacao do render.py usam seletores #pgN .ed-*
+     (especificidade maior), entao continuam vencendo este bloco. Poppins nunca
+     abaixo de 8pt (quebra o espacamento no PDF do Chromium). */
+  .ed-escopo { margin-top: 2mm; }
+  .ed-header-escopo {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 2px solid var(--cinza-900); padding-bottom: 2.5mm; margin-bottom: 1mm;
+  }
+  .ed-header-escopo .ed-header-esq {
+    font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 8pt;
+    letter-spacing: 2.5px; color: var(--verde-escuro); text-transform: uppercase;
+  }
+  .ed-header-escopo .ed-header-dir {
+    font-family: 'Fraunces', serif; font-size: 12pt; color: var(--azul);
+  }
+  .ed-item {
+    display: grid; grid-template-columns: 13mm 1fr 34mm; column-gap: 4mm;
+    padding-top: 3.5mm; padding-bottom: 3.5mm; border-bottom: 1px solid var(--cinza-200);
+  }
+  .ed-item:last-of-type { border-bottom: none; }
+  .ed-num {
+    font-family: 'Fraunces', serif; font-size: 24pt; line-height: 1;
+    color: var(--verde); font-weight: 400;
+  }
+  .ed-corpo .ed-eyebrow {
+    font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 7.5pt;
+    letter-spacing: 2.5px; color: var(--verde-escuro); text-transform: uppercase;
+    display: block; margin-bottom: 1.2mm;
+  }
+  .ed-titulo {
+    font-family: 'Fraunces', serif; font-size: 13pt; font-weight: 400;
+    color: var(--cinza-900); margin: 0 0 1.6mm 0; line-height: 1.15;
+  }
+  .ed-titulo .italic { font-style: italic; color: var(--azul); }
+  .ed-desc {
+    font-family: 'Manrope', sans-serif; font-size: 8.5pt; line-height: 1.45;
+    color: var(--cinza-700); margin: 0 0 1.8mm 0;
+  }
+  .ed-desc strong { font-weight: 700; color: var(--cinza-900); }
+  .ed-check {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: 1fr 1fr; column-gap: 4mm; row-gap: 1mm;
+  }
+  .ed-check li {
+    font-family: 'Manrope', sans-serif; font-size: 8pt; line-height: 1.3;
+    color: var(--cinza-700); padding-left: 4mm; position: relative;
+    padding-top: 0.5mm; padding-bottom: 0.5mm;
+  }
+  .ed-check li::before {
+    content: ""; position: absolute; left: 0; top: 1.6mm;
+    width: 1.8mm; height: 1.8mm; background: var(--verde); border-radius: 50%;
+  }
+  .ed-direita { text-align: right; }
+  .ed-qtd {
+    font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 7.5pt;
+    letter-spacing: 2px; color: var(--cinza-500); text-transform: uppercase;
+    display: block; margin-bottom: 1.2mm;
+  }
+  .ed-preco {
+    font-family: 'Fraunces', serif; font-size: 16pt; color: var(--azul);
+    line-height: 1; white-space: nowrap;
+  }
+  .ed-preco .ed-cent { font-size: 9pt; vertical-align: top; }
+  .ed-desconto {
+    display: flex; justify-content: flex-end; gap: 6mm; align-items: baseline;
+    border-top: 2px solid var(--cinza-900); padding-top: 2mm; margin-top: 1mm;
+    font-family: 'Manrope', sans-serif; font-size: 8pt; color: var(--cinza-700);
+  }
+  .ed-desconto .ed-desconto-valor { font-family: 'Fraunces', serif; font-size: 11pt; color: var(--cinza-900); }
+  .ed-nota {
+    border-left: 2px solid var(--verde); background: var(--cinza-100);
+    padding: 2.5mm 4mm; margin-top: 2.5mm;
+    font-family: 'Manrope', sans-serif; font-size: 8pt; line-height: 1.45;
+    color: var(--cinza-700);
+  }
+  .ed-nota strong { color: var(--cinza-900); }
+</style>
+
+<div class="page pagina-interna">
+  <div class="header-interno">
+    <img src="logo_super_seg.png" alt="Super Seg">
+    <div class="ref-direita">
+      Proposta <span class="num">Nº {{NUMERO}}</span><br>
+      {{CLIENTE}}
+    </div>
+  </div>
+
+  <div class="secao-cabecalho cab-escopo">
+    <div class="esquerda">
+      <div class="secao-numero">— 03 / Escopo Técnico</div>
+      <span class="eyebrow eyebrow-verde">O que está incluído</span>
+      <h2 class="display-lg display-escopo" style="margin-top: 6pt;">
+        O escopo<br>
+        técnico,<br>
+        <span class="italic" style="color:var(--azul);">por completo.</span>
+      </h2>
+    </div>
+    <div class="direita">
+      <p class="lead-pequeno">{{ESCOPO_INTRO}}</p>
+    </div>
+  </div>
+
+  <div class="ed-escopo">
+    <div class="ed-header-escopo">
+      <span class="ed-header-esq">{{ESCOPO_HEADER_ESQ}}</span>
+      <span class="ed-header-dir">TOTAL {{TOTAL_FMT}}</span>
+    </div>
+<!-- ITEM -->
+    <div class="ed-item">
+      <div class="ed-num">{{NUM}}</div>
+      <div class="ed-corpo">
+        <span class="ed-eyebrow">{{CATEGORIA}}</span>
+        <h3 class="ed-titulo">{{TITULO_HTML}}</h3>
+        <p class="ed-desc">{{DESCRICAO_HTML}}</p>
+        <ul class="ed-check">{{CHECKLIST_HTML}}</ul>
+      </div>
+      <div class="ed-direita">
+        <span class="ed-qtd">{{QTD_ROTULO}}</span>
+        <span class="ed-preco">{{PRECO_HTML}}</span>
+      </div>
+    </div>
+<!-- /ITEM -->
+{{LINHA_DESCONTO}}
+    <div class="ed-nota">
+      <strong>Observação técnica.</strong> {{ESCOPO_NOTA}}
+    </div>
+  </div>
+
+  <div class="investimento-edit">
+    <div class="investimento-edit-esq">
+      <span class="micro" style="color:var(--cinza-500);">Investimento total</span>
+      <div class="label-invest">Proposta <span class="italic" style="color:var(--azul);">fechada.</span></div>
+      <div class="sublabel">{{INVEST_SUBLABEL}}</div>
+    </div>
+    <div class="investimento-edit-dir">
+      <span class="moeda">R$</span><span class="valor-grande">{{VALOR_GRANDE}}</span>{{CENT_SUP}}
+      <div class="condicao-pq">— Valor líquido · sem taxa adicional</div>
+    </div>
+  </div>
+
+  <div class="pagamento-edit">
+    <span class="micro">Forma de pagamento</span>
+    <p>{{PAGAMENTO_HTML}}</p>
+  </div>
+
+  <div class="footer-edit">
+    <span class="footer-info">SUPER SEG · CNPJ 18.797.265/0001-28 · COMERCIAL@SUPER-SEG.COM</span>
+    <span class="footer-pag">03 <span class="total">/ 05</span></span>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+{
+  "variante": "servicos",
+  "numero": "35954",
+  "cliente": "ROGG COMERCIO DE ALIMENTOS LTDA",
+  "cliente_caps": "ROGG COMERCIO DE ALIMENTOS LTDA",
+  "cliente_display": "ROGG Comércio de Alimentos",
+  "cnpj": "56.044.930/0001-00",
+  "ac_contato": "Administração",
+  "ac_email": "CONTATO@CONTABILIMPACTO.COM.BR",
+  "data_emissao": "19.06.2026",
+  "validade": "26.06.2026",
+  "validade_barra": "26/06/2026",
+  "valor_grande": "1.080",
+  "valor_moeda": "R$ 1.080",
+  "service_summary": "PGR, PCMSO e Gestão do eSocial SST",
+  "service_summary_wa": "PGR + PCMSO + eSocial",
+  "lead_apresentacao": "Pacote de conformidade em SST: PGR, PCMSO e Gestão do eSocial, elaborados em conformidade integral com as Normas Regulamentadoras vigentes, protegendo sua operação contra autuações e passivos trabalhistas.",
+  "setor_verbo": "alimenta",
+  "pilares": {
+    "juridica": "Programas e documentação em conformidade que protegem sua empresa em fiscalizações, ações trabalhistas e auditorias do MTE.",
+    "agilidade": "Entrega dos documentos em até 7 dias úteis após o levantamento das informações, sem comprometer o rigor técnico.",
+    "tecnico": "Equipe especializada na elaboração de PGR, PCMSO e gestão do eSocial, aderente às Normas Regulamentadoras vigentes.",
+    "esg": "Entregas 100% digitais com certificação ICP-Brasil, reduzindo o uso de papel e a pegada ambiental."
+  },
+  "escopo_intro": "Após análise do cenário da ROGG Comércio de Alimentos, desenhamos o pacote de conformidade abaixo, com itens, quantidades e valores detalhados.",
+  "pagina3_editorial": {
+    "itens": [
+      {
+        "categoria": "NR-01",
+        "titulo": "PGR, Programa de Gerenciamento de Riscos",
+        "titulo_italico": "Gerenciamento de Riscos",
+        "qtd": 1,
+        "preco": 370.0,
+        "descricao": "Programa de Gerenciamento de Riscos conforme a **NR-01**, considerando **4 colaboradores**.",
+        "checklist": [
+          "Conforme NR-01",
+          "4 colaboradores"
+        ]
+      },
+      {
+        "categoria": "NR-07",
+        "titulo": "PCMSO, Controle Médico e Saúde Ocupacional",
+        "titulo_italico": "Saúde Ocupacional",
+        "qtd": 1,
+        "preco": 230.0,
+        "descricao": "Programa de Controle Médico e Saúde Ocupacional com base nos **riscos contidos no PGR**, considerando **4 colaboradores**.",
+        "checklist": [
+          "Base nos riscos do PGR",
+          "4 colaboradores"
+        ]
+      },
+      {
+        "categoria": "EVENTOS SST",
+        "titulo": "Gestão do eSocial",
+        "titulo_italico": "eSocial",
+        "qtd": 4,
+        "preco": 480.0,
+        "preco_unitario": 120.0,
+        "descricao": "Envio e manutenção dos eventos SST para o portal eSocial: **S-2210, S-2220, S-2230 e S-2240**, considerando 4 colaboradores.",
+        "checklist": [
+          "S-2210 e S-2220",
+          "S-2230 e S-2240",
+          "4 colaboradores"
+        ]
+      }
+    ],
+    "total": 1080.0,
+    "observacao_tecnica": "As quantidades consideram 4 colaboradores conforme o orçamento; variações no efetivo na data de execução podem ajustar o valor final proporcionalmente.",
+    "investimento": {
+      "subtitulo_itens": "PGR · PCMSO · Gestão do eSocial SST"
+    },
+    "forma_pagamento": {
+      "origem": "canonico"
+    }
+  }
+}

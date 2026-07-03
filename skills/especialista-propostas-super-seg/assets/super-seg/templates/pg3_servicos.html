@@ -1,0 +1,107 @@
+<div class="page pagina-interna">
+  <div class="header-interno">
+    <img src="logo_super_seg.png" alt="Super Seg">
+    <div class="ref-direita">
+      Proposta <span class="num">Nº {{NUMERO}}</span><br>
+      {{CLIENTE}}
+    </div>
+  </div>
+
+  <div class="secao-cabecalho cab-escopo">
+    <div class="esquerda">
+      <div class="secao-numero">— 03 / Escopo Técnico</div>
+      <span class="eyebrow eyebrow-verde">O que está incluído</span>
+      <h2 class="display-lg display-escopo" style="margin-top: 6pt;">
+        O escopo<br>
+        técnico,<br>
+        <span class="italic" style="color:var(--azul);">por completo.</span>
+      </h2>
+    </div>
+    <div class="direita">
+      <p class="lead-pequeno">{{ESCOPO_INTRO}}</p>
+    </div>
+  </div>
+
+  <div class="escopo-servicos">
+    <div class="escopo-servicos-header">
+      <div class="escopo-edit-numero">{{N_ITENS}}</div>
+      <div class="escopo-edit-titulo-bloco">
+        <span class="micro" style="color:var(--verde-escuro);">{{ESCOPO_TAG}}</span>
+        <h3 class="escopo-edit-titulo">{{ESCOPO_TITULO}}</h3>
+      </div>
+      <div class="escopo-edit-qtd">
+        <span class="micro">Itens</span>
+        <div class="qtd-num">{{N_ITENS}}</div>
+      </div>
+    </div>
+
+    <p class="escopo-servicos-intro">{{ESCOPO_DESCRICAO}}</p>
+
+    <table class="tabela-servicos">
+      <colgroup>
+        <!-- table-layout:fixed dimensiona as colunas pela primeira linha ou pelo
+             colgroup; os widths nas classes .col-* dos td NAO valem para isso.
+             A coluna 3 (especificacao) fica sem width e absorve o restante. -->
+        <col style="width:6mm"><col style="width:26mm"><col><col style="width:8mm"><col style="width:21mm"><col style="width:23mm">
+      </colgroup>
+      <thead>
+        <tr>
+          <th class="th-c">Nº</th>
+          <th>Serviço / Norma</th>
+          <th>Especificação</th>
+          <th class="th-c">Qtd.</th>
+          <th class="th-r">Vlr. unit.</th>
+          <th class="th-r">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+<!-- ROW -->
+        <tr>
+          <td class="col-num">{{NUM}}</td>
+          <td class="col-servico"><span class="serv-nome">{{SERVICO}}</span><span class="serv-norma">{{NORMA}}</span></td>
+          <td class="col-espec">{{ESPEC}}</td>
+          <td class="col-qt">{{QTD}}</td>
+          <td class="col-unit">{{VLR_UNIT}}</td>
+          <td class="col-sub">{{SUBTOTAL}}</td>
+        </tr>
+<!-- /ROW -->
+      </tbody>
+      <tfoot>{{LINHA_DESCONTO}}
+        <tr>
+          <td class="total-rotulo" colspan="5">— Valor líquido total</td>
+          <td class="total-valor">
+            <span class="moeda-tot">R$</span><span class="num-tot">{{TOTAL_INT}}</span>{{CENT_TOT}}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="escopo-servicos-nota">
+      <strong>Observação técnica.</strong> {{ESCOPO_NOTA}}
+    </div>
+  </div>
+
+  <div class="investimento-edit">
+    <div class="investimento-edit-esq">
+      <span class="micro" style="color:var(--cinza-500);">Investimento total</span>
+      <div class="label-invest">Proposta <span class="italic" style="color:var(--azul);">fechada.</span></div>
+      <div class="sublabel">{{INVEST_SUBLABEL}}</div>
+    </div>
+    <div class="investimento-edit-dir">
+      <span class="moeda">R$</span><span class="valor-grande">{{VALOR_GRANDE}}</span>{{CENT_GRANDE}}
+      <div class="condicao-pq">— Valor líquido · sem taxa adicional</div>
+    </div>
+  </div>
+
+  <div class="pagamento-edit">
+    <span class="micro">Forma de pagamento</span>
+    <p>
+      Após a aprovação do orçamento, a <strong>Nota Fiscal</strong> será emitida juntamente com o boleto, com vencimento de <strong>30 dias</strong> a contar da emissão. Realizado o levantamento das informações, o prazo de entrega dos documentos será de até <strong>7 dias úteis</strong>, com 7 dias para eventuais ajustes.
+    </p>
+  </div>
+
+  <div class="footer-edit">
+    <span class="footer-info">SUPER SEG · CNPJ 18.797.265/0001-28 · COMERCIAL@SUPER-SEG.COM</span>
+    <span class="footer-pag">03 <span class="total">/ 05</span></span>
+  </div>
+</div>
