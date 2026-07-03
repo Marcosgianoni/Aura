@@ -1,6 +1,24 @@
 especialista-propostas-super-seg
-version: 4.1.4
+version: 4.1.5
 date: 2026-07-03
+
+Mudancas na 4.1.5 (passo de entrega no SKILL.md)
+- Origem: run real Hospital Storopolli 35992 via numero desconhecido no
+  WhatsApp. O agente devolveu os caminhos como texto (linhas MEDIA: cruas,
+  sem anexo), listou o HTML e mandou resumo verboso. Diagnostico: o gateway
+  so converte MEDIA: em anexo dentro da chamada da ferramenta send_message
+  (regex ancorada em extensao, allowlist de ferramentas); MEDIA: escrito na
+  resposta conversacional e texto morto por design. E o passo 10 antigo
+  mandava literalmente "return the absolute paths of the HTML, PDF".
+- Passo 10 reescrito com dois modos: delegado (caminhos para o orquestrador,
+  sem send_message) e standalone (uma chamada de send_message, caption de
+  uma linha + MEDIA: do PDF; HTML nunca sai; flags em uma frase curta numa
+  segunda mensagem; regra de centavos no caption).
+- Achados do mesmo run registrados para a 4.2.0: extracao de PDF precisa de
+  trilho mecanico (agente improvisou import fitz, inexistente no ambiente);
+  read_file em arquivo inexistente da skill (4 tentativas, investigar se
+  repetir); alerta de validade vencida do orcamento; avaliar entrega
+  mecanica de verdade (send_message garantido por construcao).
 
 Mudancas na 4.1.4 (capa ancorada; encaixe medido pelo fundo do caractere)
 - Origem: devolutiva real GD 36148 aprovada pelo QA com dois defeitos: capa

@@ -59,7 +59,12 @@ You (the LLM) do what needs judgment. The scripts do what must be deterministic.
 
 ### LLM close
 9. Inspect the rendered page images. Beyond layout and overflow, check the page-2 media buttons and the page-5 CTAs specifically: every button and pill must show its brand color with no gray block behind or beside it. A gray offset block means the render did not embed fonts or a CSS shadow leaked; fail and report. Do not deliver.
-10. Deliver. When delegated, return the absolute paths of the HTML, PDF, and page-images directory, plus a short status and the data flags. When standalone, deliver the HTML and PDF and then surface the flags.
+10. Deliver, in one of two modes.
+    Delegated (another agent requested the proposal): return the absolute paths of the HTML, PDF, and page-images directory, plus a short status and the data flags. Do not call send_message.
+    Standalone (a person requested it via a chat platform such as WhatsApp): deliver by calling the send_message tool exactly once. The message argument has exactly two lines:
+      Proposta <numero> pronta: <cliente_display>, <valor_moeda>.
+      MEDIA:<absolute path to the PDF>
+    The MEDIA tag only works inside the send_message tool call. Writing MEDIA: or bare file paths in your conversational reply sends raw text to the user, never an attachment. Attach only the PDF; the HTML stays on disk and is offered only if the user asks for it. No summary bullets, no file listings, no recommendations in the delivery message. If there are data flags (for example the orçamento validity date already expired at generation time), send them as one short sentence in a second message after the delivery. The caption value follows the cents rule (suppress ",00", keep real cents).
 
 ## Output contract
 Always produce both files, named `Proposta_Super_Seg_[Cliente]_[Numero].html` and `Proposta_Super_Seg_[Cliente]_[Numero].pdf`. The PDF is the deliverable the seller sends; the HTML is the editable source with clickable buttons. Never deliver only one.
