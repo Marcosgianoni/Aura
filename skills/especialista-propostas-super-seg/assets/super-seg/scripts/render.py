@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-render.py (bundle) — gera render.html offline a partir do base.html, mede
+render.py (bundle) :: gera render.html offline a partir do base.html, mede
 overflow por pagina, aplica compactacao escopada por id e renderiza o PDF A4.
 
 Caminhos por ambiente, nada hardcoded:
@@ -15,6 +15,18 @@ Uso:
 Fontes embutidas (mantem o mesmo padrao do Project): Lora apelidada de
 'Fraunces', Poppins apelidada de 'Manrope'. Os .ttf viajam no bundle, em
 $SUPER_SEG_HOME/fonts, para a saida ser identica em qualquer maquina.
+
+Historico 4.1.4:
+  - A CAPA entrou na medicao de encaixe. Antes ficava fora por decisao de
+    projeto ("bloco de datas senta perto da borda por design"), premissa que
+    quebrou na proposta GD 36148: nome de cliente em 3 linhas + lead de 4
+    linhas empurraram o bloco de datas e o selo para fora da pagina (o
+    overflow:hidden da .page clipa em silencio). O template agora ancora o
+    .capa-bottom na base (absoluto) e o render mede o miolo da capa contra o
+    topo desse bloco, com levers proprios (titulo, subtitulo, slogan, ficha).
+  - O bloco .pagamento-edit ganhou levers. Era o unico bloco da pagina 3 sem
+    nenhum lever: quando o proprio pagamento era o invasor (texto de 4 linhas
+    na GD 36148), a compactacao apertava todo o resto menos o culpado.
 """
 
 import base64
@@ -36,6 +48,7 @@ CHROMIUM_PATH = os.environ.get("CHROMIUM_PATH")  # opcional
 # A medicao de overflow, portanto, nao olha mais onde o rodape parou (ele nao anda):
 # ela mede onde o CONTEUDO termina e exige uma folga minima ate o topo do rodape.
 # Se o conteudo invadir a faixa, a compactacao aperta o miolo daquela pagina.
+# Na capa (4.1.4) a mesma logica vale contra o .capa-bottom, tambem ancorado.
 GAP_MIN_PX = 8  # folga minima (px ~2mm) entre o fim do conteudo e o topo do rodape
 RESIDUO_TOL_PX = 16  # excesso residual de caixa tolerado apos compactacao maxima
 MAX_ITER = 8
@@ -117,6 +130,7 @@ def _ramp(start: float, floor: float, per: float, level: int) -> float:
 def compaction_css(pg_id: str, level: int) -> str:
     # Levers escopados por id. Os valores de partida sao os reais do template;
     # os pisos sao folgas seguras (proximas do padrao que o Project entrega).
+    # Capa (1): titulo, subtitulo, slogan e ficha do cliente (4.1.4).
     # Paginas internas (2 a 4): texto, pilares, termos, itens de escopo.
     # Pagina de CTA (5): caixas dos botoes, titulo, contato e principios, que
     # eram justamente o que nao encolhia antes.
@@ -126,6 +140,8 @@ def compaction_css(pg_id: str, level: int) -> str:
     # por espacamento (paddings/line-height) e pelos tamanhos do cabecalho do escopo.
     # Pisos aprofundados na 3.3.0: com o rodape fixo, o miolo util encolheu ~13mm
     # e a pagina 2 (a mais cheia) precisa de mais curso de compactacao para caber.
+    # 4.1.4: levers novos da capa (escopados pelas classes capa-*, so existem na
+    # pg1) e do pagamento-edit (font com piso 8pt pelo limite do Poppins).
     L = level
     return f"""
     #{pg_id} .secao-cabecalho {{ margin-top:{_ramp(10,2.5,1.4,L)}mm; margin-bottom:{_ramp(7,2,0.9,L)}mm; }}
@@ -159,35 +175,48 @@ def compaction_css(pg_id: str, level: int) -> str:
     #{pg_id} .cta-sub-edit {{ line-height:{_ramp(1.5,1.32,0.05,L)}; }}
     #{pg_id} .contato-edit {{ margin-top:{_ramp(10,5,1.3,L)}mm; padding-top:{_ramp(6,3,0.8,L)}mm; }}
     #{pg_id} .slogan-manifesto {{ margin-top:{_ramp(10,4,1.5,L)}mm; padding-top:{_ramp(6,3,0.8,L)}mm; }}
+    #{pg_id} .capa-titulo {{ font-size:{_ramp(62,50,1.8,L)}pt; margin-bottom:{_ramp(10,4,0.9,L)}mm; }}
+    #{pg_id} .capa-conteudo {{ padding-top:{_ramp(6,1,0.7,L)}mm; padding-bottom:{_ramp(6,1,0.7,L)}mm; }}
+    #{pg_id} .capa-subtitulo {{ font-size:{_ramp(11.5,9.5,0.3,L)}pt; line-height:{_ramp(1.55,1.3,0.04,L)}; }}
+    #{pg_id} .capa-slogan {{ margin-top:{_ramp(8,3,0.7,L)}mm; padding-top:{_ramp(6,2.5,0.5,L)}mm; }}
+    #{pg_id} .ficha-cliente {{ padding-top:{_ramp(8,3.5,0.6,L)}mm; padding-bottom:{_ramp(8,3.5,0.6,L)}mm; }}
+    #{pg_id} .pagamento-edit {{ margin-top:{_ramp(4,1.5,0.4,L)}mm; padding-top:{_ramp(3,1,0.3,L)}mm; }}
+    #{pg_id} .pagamento-edit p {{ font-size:{_ramp(9,8,0.15,L)}pt; line-height:{_ramp(1.55,1.3,0.04,L)}; }}
     """
 
 
 def measure_overflow(page):
     # Modelo D1: o rodape e fixo (absoluto, 12mm da borda) e nao anda. Medimos onde
-    # o CONTEUDO de cada pagina interna termina (maior bottom entre os filhos da
-    # pagina, exceto o proprio rodape) e comparamos com o topo do rodape. Se o
-    # conteudo chegar a menos de GAP_MIN_PX do rodape, esta invadindo a faixa e a
+    # o CONTEUDO de cada pagina termina (maior bottom entre os filhos da pagina,
+    # exceto o proprio elemento-limite) e comparamos com o topo do limite. Se o
+    # conteudo chegar a menos de GAP_MIN_PX do limite, esta invadindo a faixa e a
     # pagina precisa de compactacao. Retorna (pagina, px de invasao alem da folga).
-    # A capa (pg1) fica FORA da medicao: nao tem levers e seu bloco de datas senta
-    # perto da borda por design.
+    # 4.1.4: a capa (pg1) ENTROU na medicao. O limite dela e o .capa-bottom
+    # (bloco de datas + selo), agora ancorado na base pelo template. A decisao
+    # antiga de deixar a capa fora quebrou na GD 36148 (selo clipado para fora
+    # da pagina). Paginas 2 a 5 seguem medindo contra o .footer-edit.
     invasoes = page.evaluate(f"""() => {{
         const out = [];
         const GAP = {GAP_MIN_PX};
-        for (let i = 2; i <= 5; i++) {{
-            const pg = document.getElementById('pg' + i);
-            if (!pg) continue;
+        const medir = (pg, nome, seletorLimite) => {{
             const top = pg.getBoundingClientRect().top;
-            const foot = pg.querySelector('.footer-edit');
-            if (!foot) continue;
-            const footTop = foot.getBoundingClientRect().top - top;
+            const limite = pg.querySelector(seletorLimite);
+            if (!limite) return;
+            const limiteTop = limite.getBoundingClientRect().top - top;
             let contentBottom = 0;
             for (const el of pg.children) {{
-                if (el === foot) continue;
+                if (el === limite) continue;
                 const b = el.getBoundingClientRect().bottom - top;
                 if (b > contentBottom) contentBottom = b;
             }}
-            const excesso = Math.round(contentBottom - (footTop - GAP));
-            if (excesso > 0) out.push(['pg' + i, excesso]);
+            const excesso = Math.round(contentBottom - (limiteTop - GAP));
+            if (excesso > 0) out.push([nome, excesso]);
+        }};
+        const capa = document.getElementById('pg1');
+        if (capa) medir(capa, 'pg1', '.capa-bottom');
+        for (let i = 2; i <= 5; i++) {{
+            const pg = document.getElementById('pg' + i);
+            if (pg) medir(pg, 'pg' + i, '.footer-edit');
         }}
         return out;
     }}""")
@@ -228,12 +257,13 @@ def render(base_html: Path, out_pdf: Path, render_html: Path) -> None:
             # A medicao usa bounding box (inclui padding e borda alem do texto),
             # entao um excesso residual pequeno apos compactacao maxima costuma
             # ser caixa, nao tinta visivel. Quem da o veredito de sobreposicao
-            # real e o qa.py (guarda da faixa do rodape, baseado em texto).
+            # real e o qa.py (guarda de encaixe por charbox, medido pelo fundo
+            # do caractere desde a 4.1.4).
             residuo = max((e for _, e in cortando), default=0)
             if residuo <= RESIDUO_TOL_PX:
-                print(f"obs: paginas no limite apos compactacao maxima (excesso de caixa <= {RESIDUO_TOL_PX}px); o QA decide.")
+                print(f"obs: paginas no limite apos compactacao maxima (excesso de caixa <= {RESIDUO_TOL_PX}px): {cortando}; o QA decide.")
             else:
-                print("AVISO: atingiu MAX_ITER com conteudo ainda invadindo o rodape, revisar manualmente.")
+                print(f"AVISO: atingiu MAX_ITER com conteudo ainda invadindo o rodape: {cortando}; revisar manualmente.")
 
         out_pdf.parent.mkdir(parents=True, exist_ok=True)
         page.pdf(

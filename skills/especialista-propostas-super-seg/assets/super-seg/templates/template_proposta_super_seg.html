@@ -123,7 +123,8 @@
     height: 297mm;
     background: white;
     position: relative;
-    padding: 16mm 20mm 14mm 20mm;
+    /* 4.1.4: padding-bottom 34mm reserva a faixa do .capa-bottom ancorado */
+    padding: 16mm 20mm 34mm 20mm;
     display: flex;
     flex-direction: column;
   }
@@ -304,6 +305,12 @@
     justify-content: space-between;
     align-items: flex-end;
     padding-top: 6mm;
+    /* 4.1.4: ancorado na base, como o .footer-edit das internas. No fluxo,
+       conteudo longo empurrava o bloco para fora da pagina (GD 36148). */
+    position: absolute;
+    left: 20mm;
+    right: 20mm;
+    bottom: 14mm;
   }
 
   .capa-data-bloco {
