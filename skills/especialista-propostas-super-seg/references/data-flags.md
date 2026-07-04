@@ -18,4 +18,4 @@ Flags above are reported to the user AFTER delivery; they are never inserted int
 When the user resends an orçamento with the same trigger phrase, diff it against the prior version to identify what changed. The user does not explain the changes verbally; detect them.
 
 ## Duplicate detection
-If a resubmitted orçamento is identical to a prior one, confirm with the user before regenerating, rather than producing a duplicate silently.
+If a resubmitted orçamento is identical to a prior one, do not regenerate a duplicate silently. If a finished proposal already exists, verify the PDF/HTML still exist and rerun the proposal QA before resending the same deliverables with a short note that it is the same orçamento. If there is no finished proposal artifact, ask before regenerating unless the user explicitly asks to create it again.

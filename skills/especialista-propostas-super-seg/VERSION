@@ -1,6 +1,19 @@
 especialista-propostas-super-seg
-version: 4.1.5
+version: 4.1.6
 date: 2026-07-03
+
+Mudancas na 4.1.6 (colheita do background_review; so referencias)
+- Revisao da fila de self-improvement (10 patches de skill + 1 memoria,
+  02/07 a 03/07). Aprovada a memoria (atalho "proposta" = gerar direto).
+  Rejeitados os 10 patches: 4 instruiam editar o HTML gerado (anti-padrao),
+  varios ficaram obsoletos com a 4.1.4/4.1.5, e a fonte da verdade e o Git.
+- Colhidas as 2 ideias com merito: secao CTA fidelity (pg5 sem "visita"
+  quando o orcamento nao tem visita tecnica) e tratamento de CPF para
+  pessoa fisica em business-rules.md; deteccao de duplicata refinada em
+  data-flags.md (reenviar artefatos existentes com nota, apos re-QA).
+- Sinal repetido em 4 dos 10 patches, registrado para a 4.2.0: o copy de
+  apoio do CTA da pg5 depende de julgamento do agente; deve virar campo
+  mecanico derivado de forma_pagamento no sub.py.
 
 Mudancas na 4.1.5 (passo de entrega no SKILL.md)
 - Origem: run real Hospital Storopolli 35992 via numero desconhecido no

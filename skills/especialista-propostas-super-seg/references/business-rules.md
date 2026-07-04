@@ -24,6 +24,9 @@ Examples of source-specific overrides:
 - Update page-5 CTA support copy and approval-email body so they do not say "emissão da NF/boleto" or imply 30-day boleto when the source says otherwise.
 - Keep the approval flow natural: "após aceite e confirmação da entrada" when the orçamento requires an entrada before activities/agendamentos.
 
+## CTA fidelity
+The page-5 CTA support copy is commercial guidance, but it must still follow source fidelity. Do not mention "agendamento da visita" unless the orçamento explicitly requires or implies a technical visit/agendamento. For ordinary document packages with only a delivery timeline, use a neutral CTA such as "Assim que recebermos seu aceite, daremos início à programação técnica e emissão da NF/boleto." For payment with entrada, use "Assim que recebermos seu aceite e a confirmação da entrada, daremos início à programação técnica e aos próximos encaminhamentos." Also update the mailto body to match the same payment/CTA logic.
+
 ## Field handling
 - Validity equal to the emission date: extend about 7 days and flag.
 - Missing A/C contact: use "Administração" as placeholder and flag.
@@ -33,6 +36,7 @@ Examples of source-specific overrides:
 - Cents in values: render as a large integer plus a styled superscript span. When the value is a round integer, show it without decimals (for example R$ 1.750).
 - Client legal name: render in CAPS in the cover ficha.
 - CNPJ: format as XX.XXX.XXX/XXXX-XX.
+- If the source is an individual with CPF instead of CNPJ, use CPF consistently in the cover ficha, approval-email body, and any billing/fiscal wording. Do not render "CNPJ: CPF ..."; label it simply "CPF" and adapt generic terms such as "dados de faturamento" when needed.
 - Validity: format as DD/MM/AAAA in the cover corner and the page-5 header.
 
 ## Trigger words
